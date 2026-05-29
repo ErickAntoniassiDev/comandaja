@@ -11,9 +11,15 @@ export function CartPage() {
   const total = getCartTotal(cart.items, restaurant.products);
 
   return (
-    <div className="min-h-screen bg-background pb-32 text-ink">
+    <div className="min-h-screen bg-background text-ink">
       <TopBar restaurant={restaurant} cartCount={cart.count} />
-      <main className="mx-auto max-w-4xl px-4 pb-8 pt-24 md:px-8">
+      <main
+        className={`mx-auto max-w-4xl px-4 pt-24 md:px-8 ${
+          cart.items.length > 0
+            ? "pb-[calc(6.5rem+env(safe-area-inset-bottom,0px))]"
+            : "pb-8"
+        }`}
+      >
         <Link to={`/r/${restaurant.slug}`} className="text-sm font-semibold text-primary">
           Voltar ao cardapio
         </Link>
@@ -42,19 +48,23 @@ export function CartPage() {
                 const product = restaurant.products.find((entry) => entry.id === item.productId);
                 if (!product) return null;
                 return (
-                  <div key={item.id} className="flex gap-4 p-4 md:p-5">
-                    <img src={product.image} alt="" className="h-20 w-20 rounded-2xl object-cover" />
+                  <div key={item.id} className="flex gap-3 p-4 sm:gap-4 md:p-5">
+                    <img
+                      src={product.image}
+                      alt=""
+                      className="h-16 w-16 shrink-0 rounded-xl object-cover sm:h-20 sm:w-20 sm:rounded-2xl"
+                    />
                     <div className="min-w-0 flex-1">
-                      <div className="flex items-start justify-between gap-3">
-                        <div>
-                          <h2 className="font-bold text-ink">{product.name}</h2>
+                      <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
+                        <div className="min-w-0">
+                          <h2 className="font-bold leading-snug text-ink">{product.name}</h2>
                           {item.notes ? <p className="mt-1 text-xs italic text-muted">{item.notes}</p> : null}
                         </div>
-                        <p className="whitespace-nowrap text-sm font-bold text-success">
+                        <p className="shrink-0 text-sm font-bold text-success">
                           {formatCurrency(product.price * item.quantity)}
                         </p>
                       </div>
-                      <div className="mt-4 flex items-center justify-between gap-3">
+                      <div className="mt-3 flex flex-wrap items-center justify-between gap-2 sm:mt-4 sm:gap-3">
                         <QuantityControl
                           compact
                           value={item.quantity}
@@ -78,15 +88,15 @@ export function CartPage() {
       </main>
 
       {cart.items.length > 0 ? (
-        <div className="fixed bottom-0 left-0 right-0 z-30 border-t border-outline/20 bg-white/90 px-4 py-4 shadow-lift backdrop-blur-xl">
-          <div className="mx-auto flex max-w-4xl items-center justify-between gap-4">
-            <div>
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-outline/20 bg-white/95 px-4 pb-[max(1rem,env(safe-area-inset-bottom,0px))] pt-3 shadow-lift backdrop-blur-xl">
+          <div className="mx-auto flex max-w-4xl items-center justify-between gap-3">
+            <div className="min-w-0">
               <p className="text-xs font-semibold uppercase tracking-wide text-muted">Subtotal</p>
-              <p className="text-2xl font-extrabold text-ink">{formatCurrency(total)}</p>
+              <p className="truncate text-xl font-extrabold text-ink sm:text-2xl">{formatCurrency(total)}</p>
             </div>
             <Link
               to={`/r/${restaurant.slug}/checkout`}
-              className="rounded-2xl bg-primary px-6 py-4 text-sm font-bold text-white shadow-soft"
+              className="shrink-0 rounded-2xl bg-primary px-5 py-3.5 text-sm font-bold text-white shadow-soft sm:px-6 sm:py-4"
             >
               Finalizar
             </Link>

@@ -1,3 +1,4 @@
+import { BRAND_LOGO_URL } from "../config/brand";
 import type { Restaurant } from "../types";
 
 export const restaurant: Restaurant = {
@@ -7,8 +8,7 @@ export const restaurant: Restaurant = {
   whatsapp: "5514998011782",
   status: "open",
   address: "Rua das Flores, 123 - Vila Mariana, Sao Paulo",
-  logoUrl:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuAYOBLfvsRhQwN3yHHvvrUptL6GYUbP7gCkQVjoUkhbVIW2jTXCicI3SENutPiUAErSzHJTWqMR0U4qpR_MelChl31_Wnb289zZd83TNTaGF4KNIxRyWXbptNUgAYfUBdVYvJ7wqzaXB6mqemL-0AQvbkOXAXFq_pBNGB6ogCF0RgDwPPunJlf608ObUc9WqY1CY8UCuGH-mBbKVA5H4IEnFYWnFZ-9ftu6UHWpd6SS3OPG-wynbCjqgbSlPyK0f79WU4OkXN9yejbT",
+  logoUrl: BRAND_LOGO_URL,
   heroImage:
     "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1600&q=80",
   categories: [

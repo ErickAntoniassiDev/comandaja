@@ -1,11 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import { ProductModal } from "../components/ProductModal";
 import { TopBar } from "../components/TopBar";
 import { useCart } from "../hooks/useCart";
 import { useRestaurantFromRoute } from "../hooks/useRestaurantFromRoute";
 import type { Product } from "../types";
-import { formatCurrency, getCartTotal } from "../utils/format";
+import { formatCurrency } from "../utils/format";
 
 function getDefaultCategoryId(
   categories: { id: string }[],
@@ -26,8 +25,6 @@ export function MenuPage() {
   );
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
 
-  const total = useMemo(() => getCartTotal(cart.items, restaurant.products), [cart.items, restaurant.products]);
-
   const activeCategoryMeta = restaurant.categories.find((category) => category.id === activeCategory);
 
   const visibleProducts = useMemo(
@@ -44,9 +41,7 @@ export function MenuPage() {
   }, [activeCategory]);
 
   return (
-    <div
-      className={`min-h-screen bg-background text-ink ${cart.count > 0 ? "pb-[calc(5.5rem+env(safe-area-inset-bottom))]" : "pb-8"}`}
-    >
+    <div className="min-h-screen bg-background pb-8 text-ink">
       <TopBar restaurant={restaurant} cartCount={cart.count} />
 
       <section className="pt-16">
@@ -120,19 +115,19 @@ export function MenuPage() {
                   type="button"
                   key={product.id}
                   onClick={() => setSelectedProduct(product)}
-                  className="group flex w-full min-w-0 flex-col gap-3 rounded-2xl border border-outline/20 bg-white p-4 text-left shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift sm:min-h-36 sm:flex-row sm:items-start sm:gap-4"
+                  className="group flex w-full min-w-0 items-start gap-3 rounded-2xl border border-outline/20 bg-white p-3.5 text-left shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift sm:gap-4 sm:p-4"
                 >
-                  <div className="order-2 min-w-0 flex-1 sm:order-1">
+                  <div className="min-w-0 flex-1">
                     {product.badge ? (
                       <span className="mb-2 inline-flex rounded-md bg-success-soft px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-success">
                         {product.badge}
                       </span>
                     ) : null}
                     <h3 className="text-base font-bold text-ink">{product.name}</h3>
-                    <p className="mt-1 line-clamp-2 text-sm leading-6 text-muted">{product.description}</p>
-                    <p className="mt-3 text-lg font-bold text-success">{formatCurrency(product.price)}</p>
+                    <p className="mt-1 line-clamp-2 text-sm leading-5 text-muted sm:leading-6">{product.description}</p>
+                    <p className="mt-2 text-lg font-bold text-success sm:mt-3">{formatCurrency(product.price)}</p>
                   </div>
-                  <div className="order-1 h-40 w-full shrink-0 overflow-hidden rounded-2xl bg-surface-muted sm:order-2 sm:h-24 sm:w-24 md:h-28 md:w-28">
+                  <div className="h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-surface-muted sm:h-24 sm:w-24 sm:rounded-2xl md:h-28 md:w-28">
                     <img
                       src={product.image}
                       alt={product.name}
@@ -145,22 +140,6 @@ export function MenuPage() {
           )}
         </div>
       </main>
-
-      {cart.count > 0 ? (
-        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-outline/20 bg-white/95 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur-xl">
-          <div className="mx-auto w-full max-w-md">
-            <Link
-              to={`/r/${restaurant.slug}/cart`}
-              className="flex min-h-14 items-center justify-between gap-3 rounded-2xl bg-primary px-4 py-3 text-sm font-bold text-white shadow-soft sm:px-5"
-            >
-              <span className="min-w-0 truncate">
-                Ver carrinho · {cart.count} {cart.count === 1 ? "item" : "itens"}
-              </span>
-              <span className="shrink-0 whitespace-nowrap">{formatCurrency(total)}</span>
-            </Link>
-          </div>
-        </div>
-      ) : null}
 
       <ProductModal
         product={selectedProduct}

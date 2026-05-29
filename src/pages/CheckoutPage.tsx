@@ -52,7 +52,7 @@ export function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background pb-32 text-ink">
+    <div className="min-h-screen bg-background pb-8 text-ink">
       <TopBar restaurant={restaurant} cartCount={cart.count} />
       <main className="mx-auto max-w-5xl px-4 pb-8 pt-24 md:px-8">
         <Link to={`/r/${restaurant.slug}/cart`} className="text-sm font-semibold text-primary">
@@ -93,13 +93,13 @@ export function CheckoutPage() {
 
             <section className="rounded-3xl border border-outline/20 bg-white p-5 shadow-soft">
               <h2 className="text-lg font-bold text-ink">Como vai pedir?</h2>
-              <div className="mt-4 grid grid-cols-3 gap-2 rounded-2xl bg-surface-muted p-1">
+              <div className="mt-4 grid grid-cols-3 gap-1.5 rounded-2xl bg-surface-muted p-1 sm:gap-2">
                 {(Object.keys(orderTypeLabels) as OrderType[]).map((type) => (
                   <button
                     key={type}
                     type="button"
                     onClick={() => updateField("orderType", type)}
-                    className={`rounded-xl px-2 py-3 text-sm font-bold transition ${
+                    className={`rounded-xl px-1.5 py-2.5 text-xs font-bold transition sm:px-2 sm:py-3 sm:text-sm ${
                       form.orderType === type ? "bg-white text-primary shadow-soft" : "text-muted"
                     }`}
                   >
