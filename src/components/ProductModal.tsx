@@ -23,8 +23,13 @@ export function ProductModal({ product, onClose, onAdd }: ProductModalProps) {
   if (!product) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-charcoal/45 p-0 backdrop-blur-sm md:items-center md:p-6">
-      <div className="max-h-[92vh] w-full overflow-hidden rounded-t-3xl bg-white shadow-lift md:max-w-2xl md:rounded-3xl">
+    <div
+      className="fixed inset-0 z-[60] flex items-end justify-center bg-charcoal/45 p-0 backdrop-blur-sm md:items-center md:p-6"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="product-modal-title"
+    >
+      <div className="max-h-[92dvh] w-full overflow-hidden rounded-t-3xl bg-white shadow-lift md:max-h-[92vh] md:max-w-2xl md:rounded-3xl">
         <div className="relative h-64 bg-surface-muted md:h-80">
           <img src={product.image} alt={product.name} className="h-full w-full object-cover" />
           <button
@@ -43,14 +48,14 @@ export function ProductModal({ product, onClose, onAdd }: ProductModalProps) {
         </div>
 
         <div className="max-h-[calc(92vh-16rem)] overflow-y-auto p-5 md:p-6">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-ink">{product.name}</h2>
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+            <div className="min-w-0">
+              <h2 id="product-modal-title" className="text-2xl font-bold tracking-tight text-ink">
+                {product.name}
+              </h2>
               <p className="mt-2 text-sm leading-6 text-muted">{product.description}</p>
             </div>
-            <p className="whitespace-nowrap text-xl font-bold text-success">
-              {formatCurrency(product.price)}
-            </p>
+            <p className="shrink-0 text-xl font-bold text-success">{formatCurrency(product.price)}</p>
           </div>
 
           <div className="mt-4 flex flex-wrap gap-2">
@@ -75,8 +80,8 @@ export function ProductModal({ product, onClose, onAdd }: ProductModalProps) {
           <p className="mt-1 text-right text-xs text-muted">{notes.length}/200</p>
         </div>
 
-        <div className="border-t border-outline/40 bg-white/85 p-4 backdrop-blur-xl md:p-5">
-          <div className="flex items-center justify-between gap-4">
+        <div className="border-t border-outline/40 bg-white/95 p-4 pb-[max(1rem,env(safe-area-inset-bottom))] backdrop-blur-xl md:p-5">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
             <QuantityControl value={quantity} onChange={setQuantity} />
             <button
               type="button"
@@ -84,9 +89,9 @@ export function ProductModal({ product, onClose, onAdd }: ProductModalProps) {
                 onAdd(product.id, quantity, notes);
                 onClose();
               }}
-              className="flex min-h-14 flex-1 items-center justify-center rounded-2xl bg-primary px-5 text-sm font-bold text-white shadow-soft transition active:scale-[0.99]"
+              className="flex min-h-14 w-full items-center justify-center rounded-2xl bg-primary px-4 text-sm font-bold text-white shadow-soft transition active:scale-[0.99] sm:flex-1 sm:px-5"
             >
-              Adicionar - {formatCurrency(product.price * quantity)}
+              Adicionar · {formatCurrency(product.price * quantity)}
             </button>
           </div>
         </div>

@@ -22,18 +22,6 @@ export function OrderConfirmationPage() {
   const cart = useCart();
   const order = useMemo(() => readOrder(id), [id]);
 
-  function sendToWhatsApp(whatsappUrl: string) {
-    const openedWindow = window.open(whatsappUrl, "_blank");
-
-    if (openedWindow) {
-      cart.clearCart();
-      return;
-    }
-
-    cart.clearCart();
-    window.location.href = whatsappUrl;
-  }
-
   if (!order) {
     return (
       <div className="min-h-screen bg-background text-ink">
@@ -58,9 +46,9 @@ export function OrderConfirmationPage() {
   const whatsappUrl = buildWhatsAppUrl(restaurant, message);
 
   return (
-    <div className="min-h-screen bg-background pb-32 text-ink">
+    <div className="min-h-screen bg-background text-ink">
       <TopBar restaurant={restaurant} cartCount={cart.count} />
-      <main className="mx-auto max-w-lg px-4 pt-28">
+      <main className="mx-auto max-w-lg px-4 pb-[calc(13rem+env(safe-area-inset-bottom,0px))] pt-28">
         <section className="text-center">
           <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-success-soft text-4xl font-bold text-success">
             <svg aria-hidden="true" viewBox="0 0 24 24" className="h-10 w-10 fill-none stroke-current stroke-[2.5]">
@@ -150,22 +138,24 @@ export function OrderConfirmationPage() {
         </section>
       </main>
 
-      <div className="fixed bottom-0 left-0 right-0 z-30 border-t border-outline/20 bg-white/90 px-4 py-4 shadow-lift backdrop-blur-xl">
-        <div className="mx-auto max-w-lg">
-          <button
-            type="button"
-            onClick={() => sendToWhatsApp(whatsappUrl)}
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-outline/20 bg-white/95 px-4 pb-[max(1rem,env(safe-area-inset-bottom,0px))] pt-3 shadow-lift backdrop-blur-xl">
+        <div className="mx-auto max-w-lg space-y-3">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => cart.clearCart()}
             className="flex min-h-14 w-full items-center justify-center rounded-2xl bg-[#25D366] px-5 text-center text-sm font-extrabold uppercase tracking-wide text-white shadow-soft"
           >
             Enviar pedido no WhatsApp
-          </button>
+          </a>
           <Link
             to={`/r/${restaurant.slug}`}
-            className="mt-3 flex min-h-12 w-full items-center justify-center rounded-2xl bg-surface-muted px-5 text-center text-sm font-bold text-ink"
+            className="flex min-h-12 w-full items-center justify-center rounded-2xl bg-surface-muted px-5 text-center text-sm font-bold text-ink"
           >
             Voltar ao cardapio
           </Link>
-          <p className="mt-2 text-center text-xs text-muted">O atendente recebera sua comanda completa.</p>
+          <p className="text-center text-xs text-muted">O atendente recebera sua comanda completa.</p>
         </div>
       </div>
     </div>

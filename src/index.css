@@ -41,3 +41,18 @@ textarea {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+@keyframes categoryFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.category-fade-in {
+  animation: categoryFadeIn 0.25s ease-out;
+}

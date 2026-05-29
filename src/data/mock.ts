@@ -4,7 +4,7 @@ export const restaurant: Restaurant = {
   slug: "sabor-premium",
   name: "SaborPremium",
   tagline: "Culinaria artesanal com ingredientes selecionados para uma experiencia rapida, elegante e memoravel.",
-  whatsapp: "5511999998888",
+  whatsapp: "5514998011782",
   status: "open",
   address: "Rua das Flores, 123 - Vila Mariana, Sao Paulo",
   logoUrl:
