@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ComandaJá | Gestão de QR Code</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#e2e2e5",
+                        "on-tertiary-container": "#069669",
+                        "secondary-fixed": "#dae2ff",
+                        "surface-container-low": "#f3f4f5",
+                        "on-tertiary-fixed-variant": "#005137",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#356ee7",
+                        "outline": "#75777a",
+                        "primary-container": "#1a1c1e",
+                        "secondary": "#0453cd",
+                        "surface-tint": "#5d5e61",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed": "#002114",
+                        "primary-fixed-dim": "#c6c6c9",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "tertiary": "#000000",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e7e8e9",
+                        "primary": "#000101",
+                        "on-secondary-container": "#fefcff",
+                        "surface-container": "#edeeef",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#002114",
+                        "on-secondary-fixed": "#001848",
+                        "surface-bright": "#f8f9fa",
+                        "on-primary-fixed-variant": "#454749",
+                        "inverse-primary": "#c6c6c9",
+                        "outline-variant": "#c5c6ca",
+                        "on-background": "#191c1d",
+                        "on-surface": "#191c1d",
+                        "surface": "#f8f9fa",
+                        "secondary-fixed-dim": "#b2c5ff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "background": "#f8f9fa",
+                        "tertiary-fixed-dim": "#68dba9",
+                        "tertiary-fixed": "#85f8c4",
+                        "on-surface-variant": "#44474a",
+                        "surface-dim": "#d9dadb",
+                        "on-primary-container": "#838486",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#1a1c1e",
+                        "on-secondary-fixed-variant": "#0040a2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "64px",
+                        "margin-mobile": "16px",
+                        "xs": "4px",
+                        "margin-desktop": "32px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "lg": "40px",
+                        "gutter": "16px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .qr-gradient {
+            background: linear-gradient(135deg, #0453cd 0%, #002114 100%);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex">
+<!-- Sidebar Navigation (Admin Panel context) -->
+<aside class="fixed left-0 top-0 h-full w-[280px] bg-primary-container dark:bg-tertiary-container flex flex-col py-md gap-base border-r border-outline-variant/10 shadow-md z-40 hidden md:flex">
+<div class="px-md mb-lg">
+<h1 class="font-headline-md text-headline-md text-on-secondary-container">Admin Panel</h1>
+<p class="font-label-md text-label-md text-on-primary-container/70">Premium Management</p>
+</div>
+<nav class="flex-grow flex flex-col gap-xs px-sm">
+<a class="flex items-center gap-base px-md py-sm text-on-primary-container/70 hover:bg-white/5 transition-all cursor-pointer active:opacity-80 rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-base px-md py-sm text-on-primary-container/70 hover:bg-white/5 transition-all cursor-pointer active:opacity-80 rounded-lg" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-md text-label-md">Orders</span>
+</a>
+<a class="flex items-center gap-base px-md py-sm text-on-primary-container/70 hover:bg-white/5 transition-all cursor-pointer active:opacity-80 rounded-lg" href="#">
+<span class="material-symbols-outlined">restaurant_menu</span>
+<span class="font-label-md text-label-md">Menu</span>
+</a>
+<a class="bg-white/10 text-white border-l-4 border-secondary-container rounded-r-lg flex items-center gap-base px-md py-sm transition-all cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">qr_code</span>
+<span class="font-label-md text-label-md">Links &amp; QR</span>
+</a>
+<a class="flex items-center gap-base px-md py-sm text-on-primary-container/70 hover:bg-white/5 transition-all cursor-pointer active:opacity-80 rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-sm flex flex-col gap-xs">
+<button class="w-full bg-secondary text-white py-sm rounded-lg font-label-md flex items-center justify-center gap-base shadow-sm hover:brightness-110 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined">add</span>
+                New Order
+            </button>
+<div class="h-[1px] bg-outline-variant/10 my-base mx-md"></div>
+<a class="flex items-center gap-base px-md py-sm text-on-primary-container/70 hover:bg-white/5 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="flex items-center gap-base px-md py-sm text-on-primary-container/70 hover:bg-white/5 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-[280px] p-margin-mobile md:p-margin-desktop max-w-[1440px] mx-auto w-full pb-32">
+<!-- Top Navigation (Mobile) -->
+<header class="md:hidden flex items-center justify-between h-16 mb-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary text-3xl">qr_code_2</span>
+<h2 class="font-display-lg-mobile text-display-lg-mobile tracking-tight text-primary">ComandaJá</h2>
+</div>
+<button class="p-base">
+<span class="material-symbols-outlined text-on-surface">account_circle</span>
+</button>
+</header>
+<!-- Desktop Header Area -->
+<div class="hidden md:flex flex-col mb-lg">
+<h2 class="font-display-lg text-display-lg text-primary mb-xs">Divulgação &amp; Acesso</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Gerencie como seus clientes acessam seu cardápio digital. Baixe o QR Code oficial ou compartilhe o link direto nas redes sociais.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter md:gap-md">
+<!-- QR Code Card (Large Focus) -->
+<section class="md:col-span-7 lg:col-span-8 bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col">
+<div class="p-md md:p-lg flex-1 flex flex-col items-center justify-center space-y-lg">
+<div class="relative group cursor-zoom-in">
+<div class="absolute -inset-4 bg-secondary/5 rounded-2xl blur-xl group-hover:bg-secondary/10 transition-all"></div>
+<div class="relative bg-white p-base rounded-xl border border-outline-variant/30 shadow-lg">
+<img alt="QR Code do Restaurante" class="w-full max-w-[280px] md:max-w-[320px] h-auto" data-alt="A high-resolution minimalist QR Code displayed on a clean white surface with sharp geometric edges. The QR code is surrounded by a soft, premium diffused shadow and sits within a bright, high-key studio environment. The aesthetic is clean and modern, following a professional SaaS visual style with a subtle blue tint in the ambient lighting to match the ComandaJá brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPX7yGm9RPG3RFEeIxoP1v1AYRQSTi7bi4FxlKWrlBZg2Im0x4iDlEr56AV4UK2zxolSZ996RKzKXfI5jTVXWOIPbqHEO1OHmfHRG3Ne2NFi5C_-DYX3kYQGQbf4Vqg8peDWt6E6m1uGm9vhuVoGOK-tYbddglTroD1VS_ueM_4KjL18irbQplmw3lkr0iVXSFe7LnCGEGhaBszsKmfEx9O7vuROuLRAn4bj3gnUIErhHYqLSuaoVtpCbBhrMHQcrQUlNXqRgZX5JE"/>
+</div>
+</div>
+<div class="text-center">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-base">Seu QR Code Exclusivo</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm mx-auto">
+                            Imprima este código e coloque nas mesas para um atendimento 100% digital e rápido.
+                        </p>
+</div>
+</div>
+<div class="bg-surface-container-low p-md flex flex-wrap gap-base justify-center">
+<button class="bg-secondary text-white px-lg py-sm rounded-lg font-label-md flex items-center gap-base hover:brightness-110 active:scale-95 transition-all shadow-sm">
+<span class="material-symbols-outlined">download</span>
+                        Baixar QR Code (PNG)
+                    </button>
+<button class="bg-white border border-outline-variant text-primary px-lg py-sm rounded-lg font-label-md flex items-center gap-base hover:bg-surface-container-high active:scale-95 transition-all">
+<span class="material-symbols-outlined">print</span>
+                        Imprimir Material
+                    </button>
+</div>
+</section>
+<!-- Links & Social Section -->
+<aside class="md:col-span-5 lg:col-span-4 flex flex-col gap-gutter">
+<!-- Link Direct Card -->
+<div class="bg-white p-md rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-outline-variant/10">
+<h4 class="font-label-md text-label-md text-secondary uppercase tracking-widest mb-md">Link do Cardápio</h4>
+<div class="space-y-sm">
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-lg py-3 pl-md pr-12 font-body-md text-on-surface focus:ring-2 focus:ring-secondary/20 cursor-default" readonly="" type="text" value="comandaja.com/demo-rest"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-secondary hover:bg-secondary/10 rounded-md transition-colors" onclick="copyLink(this)">
+<span class="material-symbols-outlined">content_copy</span>
+</button>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Compartilhe este link na bio do Instagram ou WhatsApp.</p>
+</div>
+</div>
+<!-- Social Sharing Bento -->
+<div class="grid grid-cols-2 gap-sm">
+<a class="bg-white p-md rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-outline-variant/10 flex flex-col items-center justify-center gap-base group hover:border-secondary/30 transition-all" href="#">
+<div class="w-12 h-12 rounded-full bg-[#25D366]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[#25D366] text-2xl">share</span>
+</div>
+<span class="font-label-md text-label-md text-primary">WhatsApp</span>
+</a>
+<a class="bg-white p-md rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-outline-variant/10 flex flex-col items-center justify-center gap-base group hover:border-secondary/30 transition-all" href="#">
+<div class="w-12 h-12 rounded-full bg-[#E4405F]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[#E4405F] text-2xl">photo_camera</span>
+</div>
+<span class="font-label-md text-label-md text-primary">Instagram</span>
+</a>
+</div>
+<!-- Status Card -->
+<div class="bg-tertiary-container text-tertiary-fixed p-md rounded-xl shadow-sm flex items-center justify-between">
+<div>
+<p class="font-label-sm text-label-sm opacity-80">Status do Menu</p>
+<h5 class="font-headline-sm text-headline-sm">Online &amp; Ativo</h5>
+</div>
+<div class="w-3 h-3 bg-tertiary-fixed-dim rounded-full animate-pulse shadow-[0_0_12px_rgba(104,219,169,0.5)]"></div>
+</div>
+<!-- Marketing Tips -->
+<div class="bg-primary-container p-md rounded-xl text-white">
+<h4 class="font-label-md text-label-md text-secondary-fixed mb-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">tips_and_updates</span>
+                        Dica Premium
+                    </h4>
+<p class="font-body-sm text-body-sm text-primary-fixed/80">
+                        Colocar o QR Code em totens de acrílico aumenta a conversão de pedidos em até 40% comparado ao cardápio físico.
+                    </p>
+</div>
+</aside>
+</div>
+</main>
+<!-- Bottom Nav (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-lg border-t border-outline-variant/20 flex justify-around items-center h-20 pb-safe px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.04)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-label-sm text-label-sm-mobile" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-label-sm text-label-sm-mobile" href="#">
+<span class="material-symbols-outlined">restaurant_menu</span>
+<span>Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary font-bold font-label-sm text-label-sm-mobile" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">qr_code</span>
+<span>Links</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-label-sm text-label-sm-mobile" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Configs</span>
+</a>
+</nav>
+<script>
+        function copyLink(button) {
+            const input = button.previousElementSibling;
+            const icon = button.querySelector('.material-symbols-outlined');
+            
+            navigator.clipboard.writeText(input.value).then(() => {
+                icon.textContent = 'check';
+                button.classList.add('bg-tertiary-container/20');
+                
+                setTimeout(() => {
+                    icon.textContent = 'content_copy';
+                    button.classList.remove('bg-tertiary-container/20');
+                }, 2000);
+            });
+        }
+
+        // Add a subtle parallax effect to the QR code
+        document.addEventListener('mousemove', (e) => {
+            const qr = document.querySelector('.relative.bg-white.p-base.rounded-xl');
+            if (!qr) return;
+            
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 40;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 40;
+            
+            qr.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+    </script>
+</body></html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-error": "#ffffff",
+                "primary-fixed": "#e2e2e5",
+                "on-tertiary-container": "#069669",
+                "secondary-fixed": "#dae2ff",
+                "surface-container-low": "#f3f4f5",
+                "on-tertiary-fixed-variant": "#005137",
+                "surface-container-lowest": "#ffffff",
+                "secondary-container": "#356ee7",
+                "outline": "#75777a",
+                "primary-container": "#1a1c1e",
+                "secondary": "#0453cd",
+                "surface-tint": "#5d5e61",
+                "error": "#ba1a1a",
+                "surface-container-highest": "#e1e3e4",
+                "on-tertiary-fixed": "#002114",
+                "primary-fixed-dim": "#c6c6c9",
+                "on-error-container": "#93000a",
+                "on-primary": "#ffffff",
+                "surface-variant": "#e1e3e4",
+                "tertiary": "#000000",
+                "on-secondary": "#ffffff",
+                "surface-container-high": "#e7e8e9",
+                "primary": "#000101",
+                "on-secondary-container": "#fefcff",
+                "surface-container": "#edeeef",
+                "inverse-surface": "#2e3132",
+                "on-tertiary": "#ffffff",
+                "tertiary-container": "#002114",
+                "on-secondary-fixed": "#001848",
+                "surface-bright": "#f8f9fa",
+                "on-primary-fixed-variant": "#454749",
+                "inverse-primary": "#c6c6c9",
+                "outline-variant": "#c5c6ca",
+                "on-background": "#191c1d",
+                "on-surface": "#191c1d",
+                "surface": "#f8f9fa",
+                "secondary-fixed-dim": "#b2c5ff",
+                "inverse-on-surface": "#f0f1f2",
+                "background": "#f8f9fa",
+                "tertiary-fixed-dim": "#68dba9",
+                "tertiary-fixed": "#85f8c4",
+                "on-surface-variant": "#44474a",
+                "surface-dim": "#d9dadb",
+                "on-primary-container": "#838486",
+                "error-container": "#ffdad6",
+                "on-primary-fixed": "#1a1c1e",
+                "on-secondary-fixed-variant": "#0040a2"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "xl": "64px",
+                "margin-mobile": "16px",
+                "xs": "4px",
+                "margin-desktop": "32px",
+                "sm": "12px",
+                "base": "8px",
+                "lg": "40px",
+                "gutter": "16px",
+                "md": "24px"
+            },
+            "fontFamily": {
+                "display-lg-mobile": ["Inter"],
+                "body-md": ["Inter"],
+                "body-sm": ["Inter"],
+                "headline-md": ["Inter"],
+                "label-sm": ["Inter"],
+                "label-md": ["Inter"],
+                "headline-sm": ["Inter"],
+                "body-lg": ["Inter"],
+                "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .success-animation {
+            animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes scaleIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col items-center">
+<!-- Top AppBar (Simulated from Shared Components) -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 shadow-sm h-16 flex justify-center">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop w-full max-w-[1440px]">
+<div class="flex items-center gap-base">
+<span class="font-display-lg-mobile text-display-lg-mobile tracking-tight text-primary">ComandaJá</span>
+</div>
+<div class="flex gap-md items-center">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">shopping_cart</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">account_circle</span>
+</div>
+</div>
+</header>
+<main class="w-full max-w-lg px-margin-mobile pt-32 pb-xl flex flex-col items-center">
+<!-- Success Hero Section -->
+<div class="flex flex-col items-center mb-lg text-center">
+<div class="success-animation w-20 h-20 bg-on-tertiary-container/10 text-on-tertiary-container rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined !text-[48px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary mb-xs">Pedido Quase Pronto!</h1>
+<p class="text-on-surface-variant font-body-md">Agora é só enviar os detalhes para a cozinha via WhatsApp.</p>
+</div>
+<!-- Bento Grid Order Summary -->
+<div class="w-full grid grid-cols-1 gap-gutter">
+<!-- Items Card -->
+<div class="bg-white rounded-xl p-md shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-outline-variant/10">
+<div class="flex items-center gap-xs mb-md border-b border-outline-variant/20 pb-base">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'opsz' 20;">restaurant_menu</span>
+<h2 class="font-headline-sm text-headline-sm">Resumo dos Itens</h2>
+</div>
+<div class="space-y-md">
+<div class="flex justify-between items-start">
+<div class="flex gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A juicy gourmet Brazilian style hamburger with melting cheddar cheese, crisp lettuce, and fresh tomatoes, presented on a toasted brioche bun against a minimalist light gray studio background. The lighting is soft and high-end, highlighting the textures of the meat and the freshness of the vegetables in a premium culinary style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM3JVFdgQIR0vxeIsN6SoaSvLK7TBDyaLgz0KV2dMkxcIsif8E6w_CoEPkuGCJj1lrAEq2iA7qiwKZ2xfLK_qNEB_QmWtbJOF1mqHFLLJfjVOZD5zGDbn46vzxvb1tIoUPjmj38AGFJfSwpE_AmNZuBOtE7cwdDFkewqeCF8j0j9U0ZNz7QMoYvF3wZWk2VZFkoEACmRtzqzHe2kqdHhdtRvssB6djM4gUE0PaB2fapJ4euzpaugQnc7BfLZeIkFHyIc5icR2DOMyr"/>
+</div>
+<div>
+<p class="font-label-md text-label-md">2x X-Tudo Premium</p>
+<p class="text-body-sm text-on-surface-variant">Sem cebola, bem passado</p>
+</div>
+</div>
+<span class="font-label-md text-label-md">R$ 78,00</span>
+</div>
+<div class="flex justify-between items-start">
+<div class="flex gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A classic cold glass bottle of Coca-Cola with condensation droplets on the surface, positioned elegantly in a bright, clean minimalist setting. The lighting is crisp and refreshing, emphasizing the premium quality of the beverage within a professional food photography aesthetic using the brand's sophisticated primary and secondary colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBS6UKvlhnFoQfrUHsuYl5d6vnunoB2MXwm6a3Wz-jAoSefqFo7bQ5tpCjan97AKRIewkAWNUVTgac-M7hjDdUZtsdYI5aOXy4hP7dV1o2cmSSQB5UmyOIxesZkiQXuogBXBYKTZ5g21CP5sEtxZFCTCftbe1mOthnrZQs88aeIqE1AWWHQ6vuORPKXNPLUCwnKH-JNWoubfnPDlntQ2c3V4HycnMSQ2zU00_O3bx0gajeBEI0E5p-T5Fj3MO18AyUpbZaP52EZfVhH"/>
+</div>
+<div>
+<p class="font-label-md text-label-md">1x Coca-Cola 600ml</p>
+<p class="text-body-sm text-on-surface-variant">Gelada</p>
+</div>
+</div>
+<span class="font-label-md text-label-md">R$ 9,50</span>
+</div>
+</div>
+</div>
+<!-- Asymmetric Total & Address Cards -->
+<div class="grid grid-cols-2 gap-gutter">
+<div class="bg-secondary-container text-on-secondary-container rounded-xl p-md shadow-sm flex flex-col justify-between">
+<span class="material-symbols-outlined text-white/80">payments</span>
+<div class="mt-md">
+<p class="text-label-sm font-label-sm uppercase tracking-widest opacity-80">Total</p>
+<p class="font-headline-md text-headline-md">R$ 87,50</p>
+</div>
+</div>
+<div class="bg-white rounded-xl p-md border border-outline-variant/10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col justify-between">
+<span class="material-symbols-outlined text-secondary">local_shipping</span>
+<div class="mt-md">
+<p class="text-label-sm font-label-sm uppercase tracking-widest text-on-surface-variant">Entrega</p>
+<p class="font-label-md text-label-md truncate">Rua das Flores, 123</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Interaction Zone -->
+<div class="fixed bottom-0 left-0 w-full glass-panel border-t border-outline-variant/20 px-margin-mobile py-md flex flex-col items-center">
+<button class="w-full max-w-md bg-[#25D366] hover:bg-[#20ba56] text-white py-4 rounded-xl flex items-center justify-center gap-base transition-all active:scale-95 shadow-md group">
+<svg class="w-6 h-6 fill-current" viewbox="0 0 24 24">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+</svg>
+<span class="font-label-md text-label-md uppercase tracking-wide">Enviar pedido via WhatsApp</span>
+</button>
+<p class="mt-base text-label-sm text-on-surface-variant">O atendente receberá sua comanda completa.</p>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Hidden for Checkout/Success flow as per mandate) -->
+<!-- Suppression logic applied: Focused/Transactional page -->
+<script>
+        // Subtle micro-interaction for the success icon
+        document.addEventListener('DOMContentLoaded', () => {
+            const successIcon = document.querySelector('.success-animation');
+            if (successIcon) {
+                setTimeout(() => {
+                    successIcon.style.transition = 'transform 0.3s ease';
+                    successIcon.style.transform = 'scale(1.05)';
+                    setTimeout(() => {
+                        successIcon.style.transform = 'scale(1)';
+                    }, 300);
+                }, 600);
+            }
+        });
+    </script>
+</body></html>

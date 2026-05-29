@@ -1,0 +1,28 @@
+# ComandaJá - Product Requirements Document
+
+## Overview
+Premium digital menu and QR ordering platform for snack bars and small restaurants in Brazil.
+
+## Brand Positioning
+"Modernize seu lanchonete com um cardápio digital premium e experiência de pedido mobile."
+
+## Design Principles
+- Minimalist Premium
+- Modern SaaS (Stripe/Notion/Apple inspired)
+- Clean & Polished
+- Mobile-First Customer Experience
+- Elegant Admin Dashboard
+
+## Screens to Generate
+
+### Customer Experience (Mobile Focus)
+1. **Public Menu**: Header (logo, banner, status), Category nav, Product cards.
+2. **Product Detail Modal/Page**: Image, quantity, observations, add to cart.
+3. **Cart & Checkout**: Product list, subtotal, customer info (WhatsApp), order type (table/pickup/delivery).
+4. **Order Confirmation**: Summary with "Enviar pedido via WhatsApp" button.
+
+### Restaurant Admin Dashboard (Desktop Focus)
+5. **Dashboard Overview**: Metrics, recent orders, QR access, open/closed toggle.
+6. **Orders Management**: Order cards/table with statuses (Novo, Preparando, Pronto, Finalizado).
+7. **Product Management (CRUD)**: List/Grid of products with availability toggles and category filtering.
+8. **QR Code & Links**: Preview and download section for restaurant marketing.

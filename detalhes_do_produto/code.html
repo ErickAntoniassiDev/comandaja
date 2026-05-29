@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ComandaJá - Detalhes do Produto</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Font: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#e2e2e5",
+                        "on-tertiary-container": "#069669",
+                        "secondary-fixed": "#dae2ff",
+                        "surface-container-low": "#f3f4f5",
+                        "on-tertiary-fixed-variant": "#005137",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#356ee7",
+                        "outline": "#75777a",
+                        "primary-container": "#1a1c1e",
+                        "secondary": "#0453cd",
+                        "surface-tint": "#5d5e61",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed": "#002114",
+                        "primary-fixed-dim": "#c6c6c9",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "tertiary": "#000000",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e7e8e9",
+                        "primary": "#000101",
+                        "on-secondary-container": "#fefcff",
+                        "surface-container": "#edeeef",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#002114",
+                        "on-secondary-fixed": "#001848",
+                        "surface-bright": "#f8f9fa",
+                        "on-primary-fixed-variant": "#454749",
+                        "inverse-primary": "#c6c6c9",
+                        "outline-variant": "#c5c6ca",
+                        "on-background": "#191c1d",
+                        "on-surface": "#191c1d",
+                        "surface": "#f8f9fa",
+                        "secondary-fixed-dim": "#b2c5ff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "background": "#f8f9fa",
+                        "tertiary-fixed-dim": "#68dba9",
+                        "tertiary-fixed": "#85f8c4",
+                        "on-surface-variant": "#44474a",
+                        "surface-dim": "#d9dadb",
+                        "on-primary-container": "#838486",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#1a1c1e",
+                        "on-secondary-fixed-variant": "#0040a2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "64px",
+                        "margin-mobile": "16px",
+                        "xs": "4px",
+                        "margin-desktop": "32px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "lg": "40px",
+                        "gutter": "16px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-header {
+            background: rgba(248, 249, 250, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .ios-shadow {
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.04);
+        }
+        .quantity-control {
+            background: #edeeef;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- Top Navigation (Shell Implementation) -->
+<header class="fixed top-0 w-full z-50 glass-header border-b border-outline-variant/30 ios-shadow h-16 flex items-center">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop w-full max-w-[1440px] mx-auto">
+<button class="p-base hover:bg-surface-container rounded-full transition-all active:scale-95 duration-200" onclick="history.back()">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm-mobile md:text-headline-sm text-primary tracking-tight">ComandaJá</h1>
+<button class="p-base hover:bg-surface-container rounded-full transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary">share</span>
+</button>
+</div>
+</header>
+<main class="pt-16 pb-32 max-w-[1024px] mx-auto md:px-margin-desktop">
+<!-- Hero Section: Bento Style Image & Intro -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md md:mt-md">
+<!-- Image Area -->
+<div class="relative group aspect-square md:aspect-video lg:aspect-[4/3] bg-surface-container-high overflow-hidden md:rounded-xl">
+<img alt="Pizza Artesanal" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A premium gourmet artisanal pizza with melted mozzarella, fresh basil leaves, and vibrant cherry tomatoes on a thin charred crust. The photography is professional, high-angle, with soft natural side lighting that highlights the textures and steam. The aesthetic is clean and modern light-mode, using a palette of warm crust colors against a minimalist white marble background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHug0aHi7cvBDBXAx4sB_R2VKGTLH8l5GigmE1SJUQbRy4Q8ItJcZw17myMtF3MRl6RbohQnPtCwqXGMlfHf4iWwI8VZ62vnkdxmV2LVTS7YXhR3wHbnCM-9VofMM7BDD15ksOnvE2QNomeSqh84s4w4l9sfWbEw6Rat6oew39PZ-K7NOZknWbBOCgqD475g1CwwQF-1ptvekz7CXW_BHM6oVaE4hSOGHxJBLgCGcYn0unMWUbjkljNv45IdDiKBAo0dU6KZKoOXhj"/>
+<div class="absolute top-sm left-sm">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-sm py-xs rounded-full font-label-sm text-label-sm shadow-sm">Mais Pedido</span>
+</div>
+</div>
+<!-- Content Area -->
+<div class="px-margin-mobile md:px-0 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-base">
+<h2 class="font-display-lg-mobile text-display-lg-mobile md:font-headline-md md:text-headline-md text-primary">Pizza Margherita Premium</h2>
+<p class="font-headline-sm text-headline-sm text-on-tertiary-container">R$ 64,90</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-md">
+                        Nossa versão exclusiva da clássica italiana. Massa de fermentação natural (48h), molho de tomate pelati italiano, mozzarella de búfala fresca, manjericão orgânico e um toque final de azeite extra virgem trufado. Serve 2 pessoas (35cm).
+                    </p>
+<div class="flex flex-wrap gap-base mb-md">
+<span class="flex items-center gap-xs px-sm py-1 bg-surface-container rounded-lg text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]">timer</span> 25-35 min
+                        </span>
+<span class="flex items-center gap-xs px-sm py-1 bg-surface-container rounded-lg text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]">group</span> Serve 2 pessoas
+                        </span>
+<span class="flex items-center gap-xs px-sm py-1 bg-on-tertiary-container/10 text-on-tertiary-container rounded-lg font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]">eco</span> Vegetariano
+                        </span>
+</div>
+</div>
+<!-- Quantity Selection (Desktop) -->
+<div class="hidden md:flex items-center justify-between p-md bg-surface-container-lowest rounded-xl ios-shadow border border-outline-variant/10">
+<span class="font-label-md text-label-md text-on-surface">Quantidade</span>
+<div class="flex items-center quantity-control rounded-full p-1 h-12">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white transition-colors active:scale-90" onclick="adjustQty(-1)">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="w-12 text-center font-headline-sm text-headline-sm" id="qty-desktop">1</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white transition-colors active:scale-90" onclick="adjustQty(1)">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Customization Section -->
+<div class="mt-xl px-margin-mobile md:px-0">
+<section class="mb-lg">
+<div class="flex items-center gap-base mb-md">
+<span class="material-symbols-outlined text-secondary">edit_note</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Observações</h3>
+</div>
+<div class="relative">
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-md font-body-md text-body-md focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all resize-none ios-shadow" id="obs-field" placeholder="Ex: Tirar a cebola, bem passada, molho extra..." rows="4"></textarea>
+<div class="absolute bottom-base right-base text-outline font-label-sm text-label-sm">
+<span id="char-count">0</span>/200
+                    </div>
+</div>
+</section>
+<!-- Ingredients / Upsell Section (Asymmetric Bento) -->
+<section class="mb-lg">
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-widest mb-md">Complemente seu pedido</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-base">
+<div class="col-span-1 md:col-span-1 bg-surface-container-lowest border border-outline-variant/30 p-base rounded-xl ios-shadow hover:border-secondary transition-colors cursor-pointer group">
+<div class="aspect-square bg-surface-container rounded-lg mb-base overflow-hidden">
+<img alt="Borda Recheada" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Close up of a thick golden-brown pizza crust stuffed with gooey melted cheese. The cheese pull is artistic and appetizing. Minimalist lighting and a high-end food magazine photography style with a white studio background and soft shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp9AXdZ8mP8zmdkrCS7b9n-ujUiV6plyLUZmN2IBJlBrkoa3XJUdUYqxino_loWOnPfx--4BG4FgklPPehrZPIZ_BoygF-2pDcgi9yZeqveqwyaNzZWMBmzHavjeKkSTGhjLNKSqGKLdj2X4adjgSOvgSgZxzXm-yQf0nNDmY5oTcCg6MQAdmHq9tL4RdoePP6f-khcgD5lJEvpjZUcF5RiscVtPrzAqNBCyFA0njNMRuMBnDAU4qsKdEv3EQK0y_b1Rk1z0Z0w6OY"/>
+</div>
+<p class="font-label-md text-label-md text-primary">Borda Catupiry</p>
+<p class="font-label-sm text-label-sm text-on-tertiary-container">+ R$ 12,00</p>
+</div>
+<div class="col-span-1 md:col-span-1 bg-surface-container-lowest border border-outline-variant/30 p-base rounded-xl ios-shadow hover:border-secondary transition-colors cursor-pointer group">
+<div class="aspect-square bg-surface-container rounded-lg mb-base overflow-hidden">
+<img alt="Coca-Cola" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A cold, beaded glass bottle of Coca-Cola with condensation on the surface, standing on a minimalist white table. Professional product photography, studio lighting, high contrast, clean background, premium brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAzTPLVnzcl3DIljQCbwpGIFuCw9ojg1kCGq3Opni-_4BhZwXeg8T6n7FpcHVsOuzDWmq7D0zsf8SZTeeB4c-zp4NQQlu1j8xFNZzUm00wVFccSwvGfSGfZuEPnc1xS5QE9aQtx3uaWAM7vEqinFpgc8_9syqBr4SXajgpbZP8PnsSQ73IVYqQhHadhNZNrj6AIeBS5tQRwEx0Add7pdLxMg1V8DSypqVDDQDFgdtiZrv57Fl2E8WOhP_S9GpfDbzQz1LcHFI-zyjJ"/>
+</div>
+<p class="font-label-md text-label-md text-primary">Coca-Cola 600ml</p>
+<p class="font-label-sm text-label-sm text-on-tertiary-container">+ R$ 9,50</p>
+</div>
+<div class="hidden md:block col-span-2 bg-surface-container-lowest border border-outline-variant/30 p-base rounded-xl ios-shadow hover:border-secondary transition-colors cursor-pointer group flex items-center gap-md">
+<div class="w-24 h-24 bg-surface-container rounded-lg overflow-hidden shrink-0">
+<img alt="Milkshake" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A tall gourmet chocolate milkshake topped with whipped cream and a cherry. The lighting is soft and high-key, creating a bright and premium cafe atmosphere. Minimalist white background, professional food photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpw-rqktvnfLm-tXAiggfv-Cs0lOi93CFp9iWi_PtNq4j2YZEP2H_oaXX18e27T4KtZiJeYXXx7NpFikUkdz7l65NBGDdIJhvT7v2Gbs02TP7b7EDyyFTljbzot5K6YtGfPgVWSvpTVd6cvJG9v2CRz9B9W-84LO9-AOv0rPGVvx6QXsOw7AmxKl0NLwrb42QfWHFZ8RYp-ilx8Ab8LmfzOXleqA-StcP-vS-OUi_kN4JUZWiYnoN3iolEl2Z02OeRLZDhybaaEz0b"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Milkshake Chocolate Belgian</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-xs">Acompanhamento perfeito.</p>
+<p class="font-label-sm text-label-sm text-on-tertiary-container">+ R$ 22,00</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Footer (Mobile Only Navigation Context) -->
+<div class="fixed bottom-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-lg border-t border-outline-variant/20 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] h-auto pb-safe px-4 pt-4 md:hidden">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center quantity-control rounded-full p-1 h-12 w-32 justify-between">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/50 active:scale-90 transition-transform" onclick="adjustQty(-1)">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="font-headline-sm text-headline-sm" id="qty-mobile">1</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/50 active:scale-90 transition-transform" onclick="adjustQty(1)">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<div class="text-right">
+<p class="font-label-sm text-label-sm text-outline">Subtotal</p>
+<p class="font-headline-sm text-headline-sm text-primary" id="total-price">R$ 64,90</p>
+</div>
+</div>
+<button class="w-full h-14 bg-secondary text-white rounded-xl font-headline-sm text-headline-sm flex items-center justify-center gap-sm active:scale-[0.98] transition-all ios-shadow mb-4">
+<span class="material-symbols-outlined">shopping_basket</span>
+            Adicionar ao Carrinho
+        </button>
+</div>
+<!-- Desktop Add to Cart Sidebar (Floating) -->
+<div class="hidden md:block fixed bottom-lg right-lg z-50">
+<button class="flex items-center gap-md bg-secondary text-on-secondary px-xl py-md rounded-full font-headline-sm text-headline-sm shadow-xl hover:scale-105 active:scale-95 transition-all">
+<div class="flex flex-col items-start leading-tight">
+<span class="text-white/70 font-label-sm text-label-sm">Subtotal</span>
+<span id="total-price-desktop">R$ 64,90</span>
+</div>
+<div class="h-8 w-[1px] bg-white/20"></div>
+<span class="flex items-center gap-sm">
+<span class="material-symbols-outlined">shopping_cart</span>
+                Adicionar ao Carrinho
+            </span>
+</button>
+</div>
+<script>
+        let quantity = 1;
+        const basePrice = 64.90;
+
+        function adjustQty(amount) {
+            quantity = Math.max(1, quantity + amount);
+            updateUI();
+        }
+
+        function updateUI() {
+            const qtyMobile = document.getElementById('qty-mobile');
+            const qtyDesktop = document.getElementById('qty-desktop');
+            const priceMobile = document.getElementById('total-price');
+            const priceDesktop = document.getElementById('total-price-desktop');
+
+            const total = (quantity * basePrice).toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            });
+
+            if (qtyMobile) qtyMobile.innerText = quantity;
+            if (qtyDesktop) qtyDesktop.innerText = quantity;
+            if (priceMobile) priceMobile.innerText = total;
+            if (priceDesktop) priceDesktop.innerText = total;
+        }
+
+        // Observation Field Interaction
+        const obsField = document.getElementById('obs-field');
+        const charCount = document.getElementById('char-count');
+        
+        obsField.addEventListener('input', (e) => {
+            const length = e.target.value.length;
+            charCount.innerText = length;
+            if (length > 200) {
+                e.target.value = e.target.value.substring(0, 200);
+                charCount.innerText = 200;
+            }
+        });
+
+        // Micro-interactions for chips
+        document.querySelectorAll('.cursor-pointer').forEach(card => {
+            card.addEventListener('click', function() {
+                this.classList.toggle('border-secondary');
+                this.classList.toggle('bg-secondary-container/5');
+            });
+        });
+    </script>
+</body></html>

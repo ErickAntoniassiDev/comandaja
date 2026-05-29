@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ComandaJá | Painel Administrativo</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#e2e2e5",
+                    "on-tertiary-container": "#069669",
+                    "secondary-fixed": "#dae2ff",
+                    "surface-container-low": "#f3f4f5",
+                    "on-tertiary-fixed-variant": "#005137",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#356ee7",
+                    "outline": "#75777a",
+                    "primary-container": "#1a1c1e",
+                    "secondary": "#0453cd",
+                    "surface-tint": "#5d5e61",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-tertiary-fixed": "#002114",
+                    "primary-fixed-dim": "#c6c6c9",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "tertiary": "#000000",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#e7e8e9",
+                    "primary": "#000101",
+                    "on-secondary-container": "#fefcff",
+                    "surface-container": "#edeeef",
+                    "inverse-surface": "#2e3132",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#002114",
+                    "on-secondary-fixed": "#001848",
+                    "surface-bright": "#f8f9fa",
+                    "on-primary-fixed-variant": "#454749",
+                    "inverse-primary": "#c6c6c9",
+                    "outline-variant": "#c5c6ca",
+                    "on-background": "#191c1d",
+                    "on-surface": "#191c1d",
+                    "surface": "#f8f9fa",
+                    "secondary-fixed-dim": "#b2c5ff",
+                    "inverse-on-surface": "#f0f1f2",
+                    "background": "#f8f9fa",
+                    "tertiary-fixed-dim": "#68dba9",
+                    "tertiary-fixed": "#85f8c4",
+                    "on-surface-variant": "#44474a",
+                    "surface-dim": "#d9dadb",
+                    "on-primary-container": "#838486",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#1a1c1e",
+                    "on-secondary-fixed-variant": "#0040a2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "64px",
+                    "margin-mobile": "16px",
+                    "xs": "4px",
+                    "margin-desktop": "32px",
+                    "sm": "12px",
+                    "base": "8px",
+                    "lg": "40px",
+                    "gutter": "16px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "display-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 10px; }
+        .tonal-surface { background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-background text-on-surface overflow-x-hidden">
+<!-- Sidebar (Admin Sidebar) -->
+<aside class="fixed left-0 top-0 h-full w-[280px] bg-primary-container dark:bg-tertiary-container flex flex-col py-md gap-base border-r border-outline-variant/10 shadow-md z-40 hidden md:flex">
+<div class="px-md mb-lg">
+<h1 class="font-headline-md text-headline-md text-on-secondary-container tracking-tight">ComandaJá</h1>
+<p class="font-label-sm text-label-sm text-on-primary-container/60 mt-1 uppercase tracking-widest">Premium Management</p>
+</div>
+<nav class="flex-1 flex flex-col gap-1 px-base">
+<!-- Dashboard Active -->
+<a class="flex items-center gap-base px-md py-sm bg-white/10 text-white border-l-4 border-secondary-container rounded-r-lg transition-all active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-base px-md py-sm text-on-primary-container/70 hover:bg-white/5 transition-all active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-md text-label-md">Pedidos</span>
+</a>
+<a class="flex items-center gap-base px-md py-sm text-on-primary-container/70 hover:bg-white/5 transition-all active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-label-md text-label-md">Produtos</span>
+</a>
+<a class="flex items-center gap-base px-md py-sm text-on-primary-container/70 hover:bg-white/5 transition-all active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="category">category</span>
+<span class="font-label-md text-label-md">Categorias</span>
+</a>
+<a class="flex items-center gap-base px-md py-sm text-on-primary-container/70 hover:bg-white/5 transition-all active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="palette">palette</span>
+<span class="font-label-md text-label-md">Aparência</span>
+</a>
+<a class="flex items-center gap-base px-md py-sm text-on-primary-container/70 hover:bg-white/5 transition-all active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="qr_code_2">qr_code_2</span>
+<span class="font-label-md text-label-md">QR Code</span>
+</a>
+<a class="flex items-center gap-base px-md py-sm text-on-primary-container/70 hover:bg-white/5 transition-all active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Configurações</span>
+</a>
+</nav>
+<div class="mt-auto px-base flex flex-col gap-1 border-t border-white/5 pt-md">
+<a class="flex items-center gap-base px-md py-sm text-on-primary-container/70 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Suporte</span>
+</a>
+<a class="flex items-center gap-base px-md py-sm text-on-primary-container/70 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Sair</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-[280px] min-h-screen pb-safe">
+<!-- Top App Bar (Admin Header) -->
+<header class="sticky top-0 z-30 bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 px-margin-mobile md:px-margin-desktop h-16 flex justify-between items-center w-full shadow-sm">
+<div class="flex items-center gap-base">
+<button class="md:hidden p-2">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h2 class="font-headline-sm text-headline-sm text-primary">Painel Geral</h2>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex items-center gap-sm bg-surface-container-low px-sm py-1.5 rounded-full border border-outline-variant/30">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Loja aberta agora</span>
+</div>
+<div class="flex items-center gap-sm">
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-white font-bold text-label-md border-2 border-surface shadow-sm">
+                        AD
+                    </div>
+</div>
+</div>
+</header>
+<div class="p-margin-mobile md:p-margin-desktop max-w-[1440px] mx-auto">
+<!-- Bento Metrics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-lg">
+<!-- Main Metric -->
+<div class="md:col-span-2 bg-white p-md rounded-xl border border-outline-variant/20 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div>
+<div class="flex justify-between items-start mb-base">
+<span class="font-label-md text-label-md text-on-surface-variant">Vendas hoje</span>
+<span class="bg-on-tertiary-container/10 text-on-tertiary-container px-base py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">+12.5%</span>
+</div>
+<p class="font-display-lg-mobile text-display-lg-mobile text-primary">R$ 2.450,00</p>
+</div>
+<div class="mt-md h-12 flex items-end gap-1">
+<div class="flex-1 bg-secondary/10 h-1/3 rounded-t-sm group-hover:bg-secondary/20 transition-colors"></div>
+<div class="flex-1 bg-secondary/10 h-2/3 rounded-t-sm group-hover:bg-secondary/20 transition-colors"></div>
+<div class="flex-1 bg-secondary/10 h-1/2 rounded-t-sm group-hover:bg-secondary/20 transition-colors"></div>
+<div class="flex-1 bg-secondary/10 h-full rounded-t-sm group-hover:bg-secondary transition-colors"></div>
+<div class="flex-1 bg-secondary/10 h-3/4 rounded-t-sm group-hover:bg-secondary/20 transition-colors"></div>
+</div>
+</div>
+<!-- Secondary Metric 1 -->
+<div class="bg-white p-md rounded-xl border border-outline-variant/20 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col justify-between">
+<div>
+<span class="font-label-md text-label-md text-on-surface-variant">Pedidos pendentes</span>
+<p class="font-headline-md text-headline-md text-error mt-1">14</p>
+</div>
+<div class="mt-md flex items-center text-on-surface-variant gap-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span>
+<span class="text-[12px]">Média 18 min</span>
+</div>
+</div>
+<!-- Secondary Metric 2 -->
+<div class="bg-white p-md rounded-xl border border-outline-variant/20 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col justify-between">
+<div>
+<span class="font-label-md text-label-md text-on-surface-variant">Ticket Médio</span>
+<p class="font-headline-md text-headline-md text-primary mt-1">R$ 42,80</p>
+</div>
+<div class="mt-md flex items-center text-on-tertiary-container gap-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+<span class="text-[12px]">Crescente</span>
+</div>
+</div>
+</div>
+<!-- Asymmetric Dashboard Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Recent Orders (2/3 Width) -->
+<div class="lg:col-span-2 bg-white rounded-xl border border-outline-variant/20 shadow-[0_4px_20px_rgba(0,0,0,0.04)] overflow-hidden">
+<div class="p-md flex justify-between items-center border-b border-outline-variant/10">
+<h3 class="font-headline-sm text-headline-sm text-primary">Pedidos Recentes</h3>
+<a class="text-secondary font-label-md text-label-md hover:underline transition-all" href="#">Ver todos</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low/50">
+<tr class="font-label-sm text-label-sm text-on-surface-variant">
+<th class="px-md py-sm"># ID</th>
+<th class="px-md py-sm">Mesa/Cliente</th>
+<th class="px-md py-sm">Valor</th>
+<th class="px-md py-sm">Status</th>
+<th class="px-md py-sm text-right">Ação</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="px-md py-md font-label-md text-label-md text-on-surface-variant">#4821</td>
+<td class="px-md py-md">
+<p class="font-label-md text-label-md text-primary">Mesa 12</p>
+<p class="text-[12px] text-on-surface-variant">João Pereira</p>
+</td>
+<td class="px-md py-md font-label-md text-label-md">R$ 156,00</td>
+<td class="px-md py-md">
+<span class="bg-secondary/10 text-secondary px-base py-0.5 rounded-full text-[12px] font-semibold">Preparando</span>
+</td>
+<td class="px-md py-md text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary" data-icon="more_vert">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="px-md py-md font-label-md text-label-md text-on-surface-variant">#4820</td>
+<td class="px-md py-md">
+<p class="font-label-md text-label-md text-primary">Delivery</p>
+<p class="text-[12px] text-on-surface-variant">Maria Silva</p>
+</td>
+<td class="px-md py-md font-label-md text-label-md">R$ 48,50</td>
+<td class="px-md py-md">
+<span class="bg-on-tertiary-container/10 text-on-tertiary-container px-base py-0.5 rounded-full text-[12px] font-semibold">Pronto</span>
+</td>
+<td class="px-md py-md text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary" data-icon="more_vert">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="px-md py-md font-label-md text-label-md text-on-surface-variant">#4819</td>
+<td class="px-md py-md">
+<p class="font-label-md text-label-md text-primary">Mesa 04</p>
+<p class="text-[12px] text-on-surface-variant">Carlos G.</p>
+</td>
+<td class="px-md py-md font-label-md text-label-md">R$ 89,90</td>
+<td class="px-md py-md">
+<span class="bg-error-container text-on-error-container px-base py-0.5 rounded-full text-[12px] font-semibold">Novo</span>
+</td>
+<td class="px-md py-md text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary" data-icon="more_vert">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right Sidebar Content (1/3 Width) -->
+<div class="flex flex-col gap-gutter">
+<!-- Quick Actions -->
+<div class="bg-white p-md rounded-xl border border-outline-variant/20 shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
+<h4 class="font-label-md text-label-md text-primary mb-md">Ações Rápidas</h4>
+<div class="flex flex-col gap-sm">
+<button class="w-full bg-secondary text-white py-sm rounded-lg font-label-md text-label-md flex items-center justify-center gap-sm active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="add_circle">add_circle</span>
+                                Novo Produto
+                            </button>
+<button class="w-full bg-surface-container-low text-primary py-sm rounded-lg font-label-md text-label-md flex items-center justify-center gap-sm active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="lock">lock</span>
+                                Pausar Vendas
+                            </button>
+</div>
+</div>
+<!-- QR Code Card -->
+<div class="bg-primary-container p-md rounded-xl border border-outline-variant/10 shadow-lg text-white">
+<div class="flex justify-between items-start mb-md">
+<div>
+<h4 class="font-headline-sm text-headline-sm">Menu QR Code</h4>
+<p class="text-[12px] text-white/60">Digitalize para clientes</p>
+</div>
+<span class="material-symbols-outlined text-secondary-container" data-icon="qr_code_2" style="font-size: 32px;">qr_code_2</span>
+</div>
+<div class="bg-white p-md rounded-lg flex items-center justify-center mb-md aspect-square relative overflow-hidden group">
+<img alt="QR Code do Menu" class="w-full h-full opacity-90" data-alt="A clean, minimalist QR code displayed on a pure white background inside a modern digital interface. The QR code represents a premium restaurant's digital menu, with crisp lines and high contrast. Soft lighting and subtle shadows create a professional, tech-forward aesthetic inspired by high-end SaaS applications like Stripe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEY_rji48Fu6ZOGCOSclZzvSfHT7krlnTCGp3dy9-J7CEaTbc_OMMsVdwCwzamqPpAJbXJTtAXvBgfVIi023bGd8UAESqQ0hJK0M9glpQFXQ9UyWK-7P4PuUls2x3dUs-Dvmrg5-nkeCwXliw0nsGu1oixsQ50FcQnNEdLVFc7VJiv-T8w_smuaB9IeXASBnA3oDD_me9wlgtqIf4GKW2sdFHAyPN2c0Wh2WFsciWLe34CxqkeJx93mLfOaH_99zoRo8y1JkccF_9H"/>
+<div class="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+<span class="bg-white text-primary px-md py-sm rounded-full font-label-md text-label-md shadow-xl flex items-center gap-sm cursor-pointer">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                                    Baixar PDF
+                                </span>
+</div>
+</div>
+<button class="w-full text-white/80 text-label-sm font-label-sm border border-white/20 py-sm rounded-lg hover:bg-white/10 transition-colors">
+                            Personalizar Design
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom Nav -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-lg border-t border-outline-variant/20 flex justify-around items-center h-20 pb-safe px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.04)]">
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm-mobile">Geral</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-sm text-label-sm-mobile">Pedidos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-label-sm text-label-sm-mobile">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm-mobile">Ajustes</span>
+</a>
+</nav>
+<script>
+        // Simple interactive simulation
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('click', () => {
+                row.classList.add('scale-[0.99]', 'opacity-80');
+                setTimeout(() => {
+                    row.classList.remove('scale-[0.99]', 'opacity-80');
+                }, 100);
+            });
+        });
+    </script>
+</body></html>

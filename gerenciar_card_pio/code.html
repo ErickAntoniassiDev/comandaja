@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ComandaJá - Gerenciamento de Produtos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#e2e2e5",
+                        "on-tertiary-container": "#069669",
+                        "secondary-fixed": "#dae2ff",
+                        "surface-container-low": "#f3f4f5",
+                        "on-tertiary-fixed-variant": "#005137",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#356ee7",
+                        "outline": "#75777a",
+                        "primary-container": "#1a1c1e",
+                        "secondary": "#0453cd",
+                        "surface-tint": "#5d5e61",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed": "#002114",
+                        "primary-fixed-dim": "#c6c6c9",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "tertiary": "#000000",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e7e8e9",
+                        "primary": "#000101",
+                        "on-secondary-container": "#fefcff",
+                        "surface-container": "#edeeef",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#002114",
+                        "on-secondary-fixed": "#001848",
+                        "surface-bright": "#f8f9fa",
+                        "on-primary-fixed-variant": "#454749",
+                        "inverse-primary": "#c6c6c9",
+                        "outline-variant": "#c5c6ca",
+                        "on-background": "#191c1d",
+                        "on-surface": "#191c1d",
+                        "surface": "#f8f9fa",
+                        "secondary-fixed-dim": "#b2c5ff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "background": "#f8f9fa",
+                        "tertiary-fixed-dim": "#68dba9",
+                        "tertiary-fixed": "#85f8c4",
+                        "on-surface-variant": "#44474a",
+                        "surface-dim": "#d9dadb",
+                        "on-primary-container": "#838486",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#1a1c1e",
+                        "on-secondary-fixed-variant": "#0040a2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "64px",
+                        "margin-mobile": "16px",
+                        "xs": "4px",
+                        "margin-desktop": "32px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "lg": "40px",
+                        "gutter": "16px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sidebar-active-pill::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 24px;
+            background-color: #356ee7;
+            border-radius: 0 4px 4px 0;
+        }
+        .glass-header {
+            background: rgba(248, 249, 250, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- SideNavBar (Admin View) -->
+<aside class="fixed left-0 top-0 h-full w-[280px] bg-primary-container text-on-primary-container flex flex-col py-md gap-base border-r border-outline-variant/10 shadow-md z-40 hidden md:flex">
+<div class="px-md mb-lg">
+<div class="flex items-center gap-base mb-sm">
+<div class="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-on-secondary-container">Admin Panel</h1>
+<p class="text-label-sm text-on-primary-container/60">Premium Management</p>
+</div>
+</div>
+<button class="w-full mt-md bg-secondary text-white py-sm px-md rounded-xl font-label-md flex items-center justify-center gap-2 hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                New Order
+            </button>
+</div>
+<nav class="flex-1 flex flex-col gap-xs px-base">
+<a class="flex items-center gap-md py-sm px-md text-on-primary-container/70 hover:bg-white/5 transition-all cursor-pointer rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-white">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md py-sm px-md text-on-primary-container/70 hover:bg-white/5 transition-all cursor-pointer rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-white">receipt_long</span>
+<span class="font-label-md text-label-md">Orders</span>
+</a>
+<a class="relative flex items-center gap-md py-sm px-md bg-white/10 text-white border-l-4 border-secondary-container rounded-r-lg cursor-pointer transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+<span class="font-label-md text-label-md font-semibold">Menu</span>
+</a>
+<a class="flex items-center gap-md py-sm px-md text-on-primary-container/70 hover:bg-white/5 transition-all cursor-pointer rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-white">monitoring</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+<a class="flex items-center gap-md py-sm px-md text-on-primary-container/70 hover:bg-white/5 transition-all cursor-pointer rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-white">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-base border-t border-white/5 pt-md flex flex-col gap-xs">
+<a class="flex items-center gap-md py-sm px-md text-on-primary-container/70 hover:bg-white/5 transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-white">help</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+<a class="flex items-center gap-md py-sm px-md text-on-primary-container/70 hover:bg-white/5 transition-all rounded-lg group text-error" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-[280px] min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 md:left-[280px] right-0 z-30 glass-header border-b border-outline-variant/30 shadow-sm h-16 flex items-center px-margin-mobile md:px-margin-desktop">
+<div class="flex items-center justify-between w-full max-w-[1440px] mx-auto">
+<div class="flex items-center gap-base">
+<span class="md:hidden material-symbols-outlined text-primary cursor-pointer">menu</span>
+<h2 class="font-headline-sm text-headline-sm-mobile md:text-headline-sm text-primary">Cardápio de Produtos</h2>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden sm:flex items-center bg-surface-container rounded-full px-md py-base border border-outline-variant/20 focus-within:border-secondary transition-colors">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm w-48 lg:w-64" placeholder="Buscar no menu..." type="text"/>
+</div>
+<div class="flex items-center gap-sm">
+<div class="p-base hover:bg-surface-container rounded-full transition-colors cursor-pointer relative">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</div>
+<div class="flex items-center gap-base pl-base border-l border-outline-variant/30">
+<img alt="Profile" class="w-8 h-8 rounded-full border border-outline-variant/50 object-cover" data-alt="A professional male business executive portrait in a corporate setting. He is wearing a dark suit and has a confident, approachable expression. The lighting is bright and even, conveying a sense of reliability and leadership within a modern office environment. High resolution digital photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZMzW5XRRfBEVP7UtA6IIOt34_LBauf6NWjE3wX5C-dOistgHWEs-hRIKwdkHRiOE8YQq7K3EHwPWxR66LWCmhjrizMYfRh5f1_T7FSv6FLEuundW1kV52BD82RLCiguTrMxpGRibwGfVv37Zm4CDcxYGT_8dZs0j5f6nc2ufLVIrMUSi-2sPtUHLGftVZHlneQY-ZtbLdN-6pBx1g-vpY3mn4BlQpI6h5PjymjgfMZxfUPknr0KViay_ziCCCJ6RjV6TNQhTtHejU"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Body -->
+<section class="pt-24 pb-xl px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+<!-- Actions Bar -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-md mb-lg">
+<div class="flex gap-base">
+<span class="bg-secondary-container/10 text-secondary px-md py-base rounded-full font-label-md border border-secondary-container/20">Todos (42)</span>
+<span class="bg-surface-container text-on-surface-variant px-md py-base rounded-full font-label-md border border-outline-variant/10 hover:bg-surface-container-high transition-colors cursor-pointer">Lanches</span>
+<span class="bg-surface-container text-on-surface-variant px-md py-base rounded-full font-label-md border border-outline-variant/10 hover:bg-surface-container-high transition-colors cursor-pointer">Bebidas</span>
+</div>
+<button class="bg-secondary text-white px-md py-sm rounded-xl font-label-md flex items-center justify-center gap-2 hover:shadow-lg hover:translate-y-[-2px] transition-all active:scale-95 shadow-sm">
+<span class="material-symbols-outlined">add_circle</span>
+                    Adicionar Novo Produto
+                </button>
+</div>
+<!-- Bento Grid of Products -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter">
+<!-- Product Card 1 -->
+<div class="bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-outline-variant/10 overflow-hidden group hover:shadow-md transition-shadow">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A high-end, artisanal beef burger with melted cheddar cheese, fresh crisp lettuce, and heirloom tomato slices on a toasted brioche bun. The burger is presented on a minimalist white ceramic plate against a clean, bright studio background with professional softbox lighting. The overall mood is appetizing, fresh, and premium quality food photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA26ROtfvooSUoxkllWcmE6quzDDdlvYzJ6_ickFkhjOIDQ-wTM8NAI0yEA6ET-4pLK_DQCref13-EzR6jwYmo-pQxFlrjENTX3RvVddeX_i8BU5chtOF9CS4cpBSwdsh6HgI5q43xHJ1YCiSA-61v31BoW8vtCAj8lMmUNXn-s53Mq-Xo_DZxBZMIFMRHaO1dfW52l0pFM2yVHB-DWGihee7X1jK6V50uwN_vdKx3y91gNQbOCWQlESScP7HolIP3jzgHPiqHfs7Ji"/>
+<div class="absolute top-2 right-2 flex flex-col gap-xs">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider shadow-sm">Mais Pedido</span>
+</div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary truncate">Smash Bacon Premium</h3>
+<span class="text-tertiary-container font-bold">R$ 34,90</span>
+</div>
+<p class="text-on-surface-variant text-body-sm line-clamp-2 mb-md">Pão brioche, blend 180g, queijo cheddar, fatias de bacon crocante e molho especial da casa.</p>
+<div class="space-y-sm pt-base border-t border-outline-variant/10">
+<div class="flex items-center justify-between">
+<label class="text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+                                    Disponível
+                                </label>
+<button class="w-10 h-5 bg-on-tertiary-container rounded-full relative transition-colors">
+<span class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow-sm"></span>
+</button>
+</div>
+<div class="flex items-center justify-between">
+<label class="text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">star</span>
+                                    Destaque
+                                </label>
+<button class="w-10 h-5 bg-surface-container rounded-full relative transition-colors">
+<span class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow-sm border border-outline-variant/30"></span>
+</button>
+</div>
+</div>
+<div class="flex gap-base mt-md">
+<button class="flex-1 bg-surface-container-low text-on-surface-variant py-base rounded-lg font-label-md hover:bg-surface-container-high transition-colors flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                                Editar
+                            </button>
+<button class="p-base bg-error-container/20 text-error rounded-lg hover:bg-error-container/40 transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-outline-variant/10 overflow-hidden group hover:shadow-md transition-shadow">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Golden, crispy artisanal french fries seasoned with sea salt and fresh herbs, served in a sleek black ceramic bowl. The lighting is high-contrast with a sophisticated dark-mode aesthetic background that highlights the texture and steam rising from the hot fries. Professional food styling focusing on the crunch and golden-brown perfection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqzRcNiHWIR94KylpXwIl3ZqQtWiWHNEfmfJVOODW0fYzSqihwSXIS4VOSZI9fw3EgkOFaOKBuKIx4wZsMqCKSi38YaOZzVmA-XnmSPqNDj--C5AECRmMGPMifOPoKWTge4xhqB8JzDY3vxgO20OLJDoSG9--2LLL2fdMs0akXD5zhuDKhYR5K4tw1hOKdWbMg0gZ9glggFLVwPm3odi2yZI2IH_DsVPNU_NvOBZwSpEV3pDN66togkjy3QY0yLqaRDhMQX-6DBX9b"/>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary truncate">Batata Crinkle</h3>
+<span class="text-tertiary-container font-bold">R$ 18,00</span>
+</div>
+<p class="text-on-surface-variant text-body-sm line-clamp-2 mb-md">Batatas em corte especial ultra crocantes, acompanhadas de maionese de alho.</p>
+<div class="space-y-sm pt-base border-t border-outline-variant/10">
+<div class="flex items-center justify-between">
+<label class="text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+                                    Disponível
+                                </label>
+<button class="w-10 h-5 bg-on-tertiary-container rounded-full relative transition-colors">
+<span class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow-sm"></span>
+</button>
+</div>
+<div class="flex items-center justify-between">
+<label class="text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">star</span>
+                                    Destaque
+                                </label>
+<button class="w-10 h-5 bg-secondary-container rounded-full relative transition-colors">
+<span class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow-sm"></span>
+</button>
+</div>
+</div>
+<div class="flex gap-base mt-md">
+<button class="flex-1 bg-surface-container-low text-on-surface-variant py-base rounded-lg font-label-md hover:bg-surface-container-high transition-colors flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                                Editar
+                            </button>
+<button class="p-base bg-error-container/20 text-error rounded-lg hover:bg-error-container/40 transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 (Out of Stock) -->
+<div class="bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-outline-variant/10 overflow-hidden group hover:shadow-md transition-shadow grayscale opacity-80">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A refreshing, gourmet fruit smoothie in a tall minimalist glass with a reusable straw. The drink is garnished with a fresh sprig of mint and a slice of lime. The background is a brightly lit, clean white kitchen with soft, morning sunlight streaming through a window. High-key aesthetic focusing on health and freshness." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAscpD2dP0LoVa8ZcTgps8o15kyP5w0FvcEzAnfcLpfoixPsPweMCLBxXPrge5dGjtWtTm8F_U2hTps1a4NmQUcZvJXLUx7UG1CkTuhXh77Rz2C7RCWfb_t_pHWGhF85JPmFQWQ01B_jWCnUqJ5DPdAznu1-FWupqvQuXO7cQhf3ismwjRAE-rKXyNv0LlK9ZI1nP2B7PFfUTecC56rIUx6lxTR5lRIJF0yd__62VS8XtFBpi5Cp1erAe_anW5K-LbOQtjJ6aZh9ecm"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+<span class="bg-white/90 text-primary px-md py-base rounded-lg font-label-md shadow-lg">INDISPONÍVEL</span>
+</div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary truncate">Milkshake de Morango</h3>
+<span class="text-tertiary-container font-bold">R$ 22,00</span>
+</div>
+<p class="text-on-surface-variant text-body-sm line-clamp-2 mb-md">Feito com sorvete premium e calda artesanal de frutas vermelhas colhidas no dia.</p>
+<div class="space-y-sm pt-base border-t border-outline-variant/10">
+<div class="flex items-center justify-between">
+<label class="text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+                                    Disponível
+                                </label>
+<button class="w-10 h-5 bg-surface-container-highest rounded-full relative transition-colors">
+<span class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow-sm border border-outline-variant/30"></span>
+</button>
+</div>
+<div class="flex items-center justify-between">
+<label class="text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">star</span>
+                                    Destaque
+                                </label>
+<button class="w-10 h-5 bg-surface-container rounded-full relative transition-colors">
+<span class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow-sm border border-outline-variant/30"></span>
+</button>
+</div>
+</div>
+<div class="flex gap-base mt-md">
+<button class="flex-1 bg-surface-container-low text-on-surface-variant py-base rounded-lg font-label-md hover:bg-surface-container-high transition-colors flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                                Editar
+                            </button>
+<button class="p-base bg-error-container/20 text-error rounded-lg hover:bg-error-container/40 transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-outline-variant/10 overflow-hidden group hover:shadow-md transition-shadow">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A gourmet hot dog with a premium grilled sausage, topped with caramelized onions, tangy mustard, and microgreens on a soft artisan roll. The image is captured in a trendy, urban eatery setting with warm industrial lighting and a rustic wooden tabletop. The focus is sharp on the toppings, showcasing the rich textures and vibrant colors of the ingredients." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWg6uGwIjroM97v1VdbEWEAw756uIGkKW7iHSsP-iqn31eyVSWENtvb6fB4YjEREsGEgkcnn6zaKwyDP9vyT8LUMlVU-okeNdrB9ig2HpjfeWiV7gtue9LhlSWA4rCTkIurML-UX7ZM-cZhm3EpxZIyRm9lxeIAFpyNj9Au51T225W86wDEKz_b1qPcg7uoYqIq2bPfgwPrXvezr5eQXivF6yILm70blXyhDcsTcpLE4Fifj8Zke0bAnT2X0f2PFfNauVqCYbSHSAo"/>
+<div class="absolute top-2 right-2 flex flex-col gap-xs">
+<span class="bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider shadow-sm">Novo</span>
+</div>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary truncate">Hot Dog Artisan</h3>
+<span class="text-tertiary-container font-bold">R$ 26,00</span>
+</div>
+<p class="text-on-surface-variant text-body-sm line-clamp-2 mb-md">Salsicha defumada premium, pão brioche, cebola caramelizada e aioli de ervas.</p>
+<div class="space-y-sm pt-base border-t border-outline-variant/10">
+<div class="flex items-center justify-between">
+<label class="text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+                                    Disponível
+                                </label>
+<button class="w-10 h-5 bg-on-tertiary-container rounded-full relative transition-colors">
+<span class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow-sm"></span>
+</button>
+</div>
+<div class="flex items-center justify-between">
+<label class="text-label-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">star</span>
+                                    Destaque
+                                </label>
+<button class="w-10 h-5 bg-surface-container rounded-full relative transition-colors">
+<span class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full shadow-sm border border-outline-variant/30"></span>
+</button>
+</div>
+</div>
+<div class="flex gap-base mt-md">
+<button class="flex-1 bg-surface-container-low text-on-surface-variant py-base rounded-lg font-label-md hover:bg-surface-container-high transition-colors flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                                Editar
+                            </button>
+<button class="p-base bg-error-container/20 text-error rounded-lg hover:bg-error-container/40 transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State / Add Suggestion -->
+<div class="mt-xl border-2 border-dashed border-outline-variant/30 rounded-2xl p-xl flex flex-col items-center justify-center text-center opacity-60 hover:opacity-100 transition-opacity cursor-pointer group">
+<div class="w-16 h-16 bg-surface-container rounded-full flex items-center justify-center mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-outline text-[32px]">post_add</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary">Expandir seu Menu</h4>
+<p class="text-on-surface-variant text-body-md max-w-sm">Tem um novo sabor pronto para brilhar? Clique aqui para cadastrar novos itens e atualizar sua vitrine.</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface/80 dark:bg-surface-container-highest/80 backdrop-blur-lg border-t border-outline-variant/20 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] pb-safe px-4">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-sm font-label-sm-mobile">Dash</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+<span class="text-label-sm font-label-sm-mobile">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-label-sm font-label-sm-mobile">Pedidos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-sm font-label-sm-mobile">Perfil</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for toggle buttons
+        document.querySelectorAll('button.relative').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const dot = this.querySelector('span');
+                const isActive = dot.classList.contains('right-0.5');
+                
+                if (isActive) {
+                    dot.classList.replace('right-0.5', 'left-0.5');
+                    this.classList.replace('bg-on-tertiary-container', 'bg-surface-container-highest');
+                    this.classList.replace('bg-secondary-container', 'bg-surface-container');
+                } else {
+                    dot.classList.replace('left-0.5', 'right-0.5');
+                    // Check parent label text for semantic coloring
+                    const labelText = this.parentElement.querySelector('label').innerText;
+                    if(labelText.includes('Disponível')) {
+                        this.classList.replace('bg-surface-container-highest', 'bg-on-tertiary-container');
+                    } else {
+                        this.classList.replace('bg-surface-container', 'bg-secondary-container');
+                    }
+                }
+                
+                // Active feedback
+                this.classList.add('scale-110');
+                setTimeout(() => this.classList.remove('scale-110'), 200);
+            });
+        });
+    </script>
+</body></html>

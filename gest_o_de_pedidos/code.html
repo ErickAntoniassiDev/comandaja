@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ComandaJá - Painel Administrativo</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#e2e2e5",
+                    "on-tertiary-container": "#069669",
+                    "secondary-fixed": "#dae2ff",
+                    "surface-container-low": "#f3f4f5",
+                    "on-tertiary-fixed-variant": "#005137",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#356ee7",
+                    "outline": "#75777a",
+                    "primary-container": "#1a1c1e",
+                    "secondary": "#0453cd",
+                    "surface-tint": "#5d5e61",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-tertiary-fixed": "#002114",
+                    "primary-fixed-dim": "#c6c6c9",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "tertiary": "#000000",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#e7e8e9",
+                    "primary": "#000101",
+                    "on-secondary-container": "#fefcff",
+                    "surface-container": "#edeeef",
+                    "inverse-surface": "#2e3132",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#002114",
+                    "on-secondary-fixed": "#001848",
+                    "surface-bright": "#f8f9fa",
+                    "on-primary-fixed-variant": "#454749",
+                    "inverse-primary": "#c6c6c9",
+                    "outline-variant": "#c5c6ca",
+                    "on-background": "#191c1d",
+                    "on-surface": "#191c1d",
+                    "surface": "#f8f9fa",
+                    "secondary-fixed-dim": "#b2c5ff",
+                    "inverse-on-surface": "#f0f1f2",
+                    "background": "#f8f9fa",
+                    "tertiary-fixed-dim": "#68dba9",
+                    "tertiary-fixed": "#85f8c4",
+                    "on-surface-variant": "#44474a",
+                    "surface-dim": "#d9dadb",
+                    "on-primary-container": "#838486",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#1a1c1e",
+                    "on-secondary-fixed-variant": "#0040a2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "64px",
+                    "margin-mobile": "16px",
+                    "xs": "4px",
+                    "margin-desktop": "32px",
+                    "sm": "12px",
+                    "base": "8px",
+                    "lg": "40px",
+                    "gutter": "16px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "display-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .order-card {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .order-card:hover {
+            transform: translateY(-2px);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e1e3e4;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c5c6ca;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<!-- Admin Shell -->
+<div class="flex h-screen w-full">
+<!-- Sidebar Navigation (Mandatory Admin Component) -->
+<aside class="fixed left-0 top-0 h-full w-[280px] bg-primary-container dark:bg-tertiary-container flex flex-col py-md gap-base border-r border-outline-variant/10 shadow-md z-40 hidden md:flex">
+<div class="px-md mb-lg">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[24px]">restaurant</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-on-secondary-container">Admin Panel</h1>
+<p class="font-label-sm text-label-sm text-on-primary-container/60">Premium Management</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-sm space-y-1">
+<a class="flex items-center gap-sm px-md py-3 font-label-md text-label-md text-on-primary-container/70 hover:bg-white/5 transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-sm px-md py-3 font-label-md text-label-md bg-white/10 text-white border-l-4 border-secondary-container rounded-r-lg cursor-pointer" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span>Orders</span>
+</a>
+<a class="flex items-center gap-sm px-md py-3 font-label-md text-label-md text-on-primary-container/70 hover:bg-white/5 transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined">restaurant_menu</span>
+<span>Menu</span>
+</a>
+<a class="flex items-center gap-sm px-md py-3 font-label-md text-label-md text-on-primary-container/70 hover:bg-white/5 transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-sm px-md py-3 font-label-md text-label-md text-on-primary-container/70 hover:bg-white/5 transition-all cursor-pointer" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="px-sm mt-auto">
+<button class="w-full mb-base flex items-center justify-center gap-base bg-secondary text-white py-3 rounded-xl font-label-md shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add</span>
+<span>New Order</span>
+</button>
+<hr class="border-outline-variant/10 mb-base mx-base"/>
+<a class="flex items-center gap-sm px-md py-3 font-label-md text-label-md text-on-primary-container/70 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-sm px-md py-3 font-label-md text-label-md text-error hover:bg-error/5 transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-[280px] h-screen overflow-hidden flex flex-col">
+<!-- Top App Bar -->
+<header class="h-16 flex justify-between items-center px-margin-mobile md:px-margin-desktop bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 sticky top-0 z-30">
+<div class="flex items-center gap-md">
+<h2 class="font-headline-sm text-headline-sm text-primary">Gerenciamento de Pedidos</h2>
+<div class="hidden lg:flex items-center bg-surface-container-low px-4 py-1.5 rounded-full border border-outline-variant/20">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse mr-2"></span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Cozinha Online</span>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="relative flex items-center bg-surface-container rounded-lg px-3 py-1.5 border border-outline-variant/10">
+<span class="material-symbols-outlined text-outline text-[20px] mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-32 md:w-64 p-0" placeholder="Buscar pedido..." type="text"/>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant/30">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of a restaurant manager for the admin profile section, high-key studio lighting with a soft gray background, clean and premium corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJrBKIkTJl-VVHhcpL919btZ0N6ebR5UpJ3CUImF4_OAKbY9LURZFvDIRexvQyBQiBz5MIz2IBgrmLZ0-UhnVETLgHjbED5O6sIc2XbaX0Dcdjuaqex0Pvgb2aXCTm6dc0tR1e9gA4mhju2oSa_XBp-0CdhdUVovjsz6PLt9XrqP_p2lF8DFASDRuyrKWLlPSHLE6HJgGpGuXy8hQ9VIc9ZZwgq4YBM3CDId0memrptbua2P8NsbIfdW075eCxmwfNU-RRaL4JIsip"/>
+</div>
+</div>
+</header>
+<!-- Kanban Board -->
+<div class="flex-1 overflow-x-auto overflow-y-hidden p-margin-mobile md:p-margin-desktop bg-surface-container-low">
+<div class="flex gap-md h-full min-w-max md:min-w-0">
+<!-- Novo -->
+<section class="flex flex-col w-[320px] h-full">
+<div class="flex items-center justify-between mb-md px-2">
+<div class="flex items-center gap-base">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<h3 class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Novo</h3>
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-2 py-0.5 rounded text-xs font-bold">2</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant cursor-pointer">more_vert</span>
+</div>
+<div class="flex-1 overflow-y-auto space-y-md pr-2">
+<!-- Order Card 1 -->
+<div class="order-card bg-surface p-md rounded-xl shadow-sm border border-outline-variant/10">
+<div class="flex justify-between items-start mb-base">
+<span class="text-label-sm font-bold text-secondary">#ORD-4582</span>
+<span class="bg-on-tertiary-fixed text-tertiary-fixed px-2 py-0.5 rounded text-[10px] font-bold uppercase">Mesa 04</span>
+</div>
+<h4 class="font-headline-sm text-[16px] text-on-surface mb-xs leading-tight">Ricardo Almeida</h4>
+<div class="flex items-center gap-xs text-on-surface-variant text-sm mb-md">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Faz 5 mins</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-sm mb-md">
+<ul class="text-sm space-y-1 text-on-surface-variant">
+<li class="flex justify-between"><span>1x X-Burger Especial</span></li>
+<li class="flex justify-between"><span>1x Coca-Cola 350ml</span></li>
+</ul>
+</div>
+<div class="flex gap-base">
+<button class="flex-1 bg-secondary text-white py-2 rounded-lg text-sm font-label-md active:scale-95 transition-transform">Preparar</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant/30 text-[#25D366] rounded-lg hover:bg-[#25D366]/5 transition-colors">
+<span class="material-symbols-outlined">chat</span>
+</button>
+</div>
+</div>
+<!-- Order Card 2 -->
+<div class="order-card bg-surface p-md rounded-xl shadow-sm border border-outline-variant/10">
+<div class="flex justify-between items-start mb-base">
+<span class="text-label-sm font-bold text-secondary">#ORD-4583</span>
+<span class="bg-secondary-container text-white px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide">Delivery</span>
+</div>
+<h4 class="font-headline-sm text-[16px] text-on-surface mb-xs leading-tight">Juliana Costa</h4>
+<div class="flex items-center gap-xs text-on-surface-variant text-sm mb-md">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Faz 2 mins</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-sm mb-md">
+<ul class="text-sm space-y-1 text-on-surface-variant">
+<li class="flex justify-between"><span>2x Hot Dog Premium</span></li>
+<li class="flex justify-between"><span>1x Batata Média</span></li>
+</ul>
+</div>
+<div class="flex gap-base">
+<button class="flex-1 bg-secondary text-white py-2 rounded-lg text-sm font-label-md active:scale-95 transition-transform">Preparar</button>
+<button class="w-10 h-10 flex items-center justify-center border border-outline-variant/30 text-[#25D366] rounded-lg hover:bg-[#25D366]/5 transition-colors">
+<span class="material-symbols-outlined">chat</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Preparando -->
+<section class="flex flex-col w-[320px] h-full">
+<div class="flex items-center justify-between mb-md px-2">
+<div class="flex items-center gap-base">
+<span class="w-2 h-2 rounded-full bg-on-secondary-fixed-variant"></span>
+<h3 class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Preparando</h3>
+<span class="bg-outline-variant/30 text-on-surface-variant px-2 py-0.5 rounded text-xs font-bold">1</span>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto space-y-md pr-2">
+<div class="order-card bg-surface p-md rounded-xl shadow-sm border-l-4 border-on-secondary-fixed-variant">
+<div class="flex justify-between items-start mb-base">
+<span class="text-label-sm font-bold text-secondary">#ORD-4579</span>
+<span class="bg-on-tertiary-fixed text-tertiary-fixed px-2 py-0.5 rounded text-[10px] font-bold uppercase">Mesa 12</span>
+</div>
+<h4 class="font-headline-sm text-[16px] text-on-surface mb-xs leading-tight">Marcos Silva</h4>
+<div class="w-full bg-surface-container rounded-full h-1.5 mb-md overflow-hidden">
+<div class="bg-on-secondary-fixed-variant h-full w-2/3 animate-pulse"></div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-sm mb-md">
+<p class="text-sm font-medium text-on-surface mb-1">Items em preparo:</p>
+<ul class="text-sm space-y-1 text-on-surface-variant">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-on-tertiary-container">check_circle</span>
+<span>Picanha na Chapa</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-outline-variant">radio_button_unchecked</span>
+<span>Arroz e Fritas</span>
+</li>
+</ul>
+</div>
+<div class="flex gap-base">
+<button class="flex-1 bg-on-tertiary-container text-white py-2 rounded-lg text-sm font-label-md active:scale-95 transition-transform">Finalizar</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Pronto -->
+<section class="flex flex-col w-[320px] h-full">
+<div class="flex items-center justify-between mb-md px-2">
+<div class="flex items-center gap-base">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+<h3 class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Pronto</h3>
+<span class="bg-on-tertiary-fixed text-tertiary-fixed px-2 py-0.5 rounded text-xs font-bold">1</span>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto space-y-md pr-2">
+<div class="order-card bg-tertiary-fixed/10 p-md rounded-xl border border-on-tertiary-container/30">
+<div class="flex justify-between items-start mb-base">
+<span class="text-label-sm font-bold text-on-tertiary-container">#ORD-4575</span>
+<span class="bg-secondary-container text-white px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide">Delivery</span>
+</div>
+<h4 class="font-headline-sm text-[16px] text-on-surface mb-xs leading-tight">Beatriz Oliveira</h4>
+<div class="flex items-center gap-xs text-on-tertiary-container font-medium text-sm mb-md">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span>Aguardando Retirada</span>
+</div>
+<button class="w-full border-2 border-on-tertiary-container text-on-tertiary-container py-2 rounded-lg text-sm font-label-md hover:bg-on-tertiary-container hover:text-white transition-all">Despachar</button>
+</div>
+</div>
+</section>
+<!-- Finalizado -->
+<section class="flex flex-col w-[320px] h-full">
+<div class="flex items-center justify-between mb-md px-2">
+<div class="flex items-center gap-base">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<h3 class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Finalizado</h3>
+<span class="bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded text-xs font-bold">Hoje: 24</span>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto space-y-md pr-2 opacity-60 grayscale-[0.5]">
+<div class="bg-surface p-md rounded-xl border border-outline-variant/10">
+<div class="flex justify-between items-center mb-base">
+<span class="text-label-sm font-medium text-outline">#ORD-4570</span>
+<span class="text-xs text-outline">14:30</span>
+</div>
+<h4 class="font-headline-sm text-[14px] text-on-surface">Carlos Eduardo</h4>
+<p class="text-xs text-on-surface-variant mt-1">Total: R$ 45,90</p>
+</div>
+<div class="bg-surface p-md rounded-xl border border-outline-variant/10">
+<div class="flex justify-between items-center mb-base">
+<span class="text-label-sm font-medium text-outline">#ORD-4569</span>
+<span class="text-xs text-outline">14:15</span>
+</div>
+<h4 class="font-headline-sm text-[14px] text-on-surface">Ana Paula</h4>
+<p class="text-xs text-on-surface-variant mt-1">Total: R$ 82,00</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Stats Bar (Bottom) -->
+<footer class="h-12 bg-white border-t border-outline-variant/20 flex items-center px-margin-desktop justify-between shrink-0">
+<div class="flex gap-lg">
+<div class="flex items-center gap-2">
+<span class="text-label-sm text-on-surface-variant">Tempo médio de preparo:</span>
+<span class="text-label-sm font-bold text-on-tertiary-container">18 min</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-sm text-on-surface-variant">Faturamento hoje:</span>
+<span class="text-label-sm font-bold text-on-surface">R$ 1.240,00</span>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-1 text-label-sm text-secondary font-semibold hover:underline">
+<span class="material-symbols-outlined text-[18px]">history</span>
+                        Ver Histórico
+                    </button>
+</div>
+</footer>
+</main>
+</div>
+<!-- Mobile Navigation (Suppressed in admin usually but good for UX) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-surface/80 backdrop-blur-lg border-t border-outline-variant/20 pb-safe px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.04)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline font-label-sm" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim font-bold font-label-sm" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span>Pedidos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline font-label-sm" href="#">
+<span class="material-symbols-outlined">restaurant_menu</span>
+<span>Cardápio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline font-label-sm" href="#">
+<span class="material-symbols-outlined">person</span>
+<span>Perfil</span>
+</a>
+</nav>
+<script>
+        // Simple drag scroll for the Kanban on desktop if needed or touch
+        const slider = document.querySelector('.overflow-x-auto');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            if(e.target.closest('.order-card')) return;
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+        slider.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2;
+            slider.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body></html>

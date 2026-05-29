@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ComandaJá - Cardápio Digital</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#e2e2e5",
+                        "on-tertiary-container": "#069669",
+                        "secondary-fixed": "#dae2ff",
+                        "surface-container-low": "#f3f4f5",
+                        "on-tertiary-fixed-variant": "#005137",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#356ee7",
+                        "outline": "#75777a",
+                        "primary-container": "#1a1c1e",
+                        "secondary": "#0453cd",
+                        "surface-tint": "#5d5e61",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed": "#002114",
+                        "primary-fixed-dim": "#c6c6c9",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "tertiary": "#000000",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e7e8e9",
+                        "primary": "#000101",
+                        "on-secondary-container": "#fefcff",
+                        "surface-container": "#edeeef",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#002114",
+                        "on-secondary-fixed": "#001848",
+                        "surface-bright": "#f8f9fa",
+                        "on-primary-fixed-variant": "#454749",
+                        "inverse-primary": "#c6c6c9",
+                        "outline-variant": "#c5c6ca",
+                        "on-background": "#191c1d",
+                        "on-surface": "#191c1d",
+                        "surface": "#f8f9fa",
+                        "secondary-fixed-dim": "#b2c5ff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "background": "#f8f9fa",
+                        "tertiary-fixed-dim": "#68dba9",
+                        "tertiary-fixed": "#85f8c4",
+                        "on-surface-variant": "#44474a",
+                        "surface-dim": "#d9dadb",
+                        "on-primary-container": "#838486",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#1a1c1e",
+                        "on-secondary-fixed-variant": "#0040a2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "64px",
+                        "margin-mobile": "16px",
+                        "xs": "4px",
+                        "margin-desktop": "32px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "lg": "40px",
+                        "gutter": "16px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-effect { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen pb-32">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-container/80 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full max-w-[1440px] mx-auto">
+<div class="flex items-center gap-base">
+<img alt="Logo ComandaJá" class="h-8 w-auto rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYOBLfvsRhQwN3yHHvvrUptL6GYUbP7gCkQVjoUkhbVIW2jTXCicI3SENutPiUAErSzHJTWqMR0U4qpR_MelChl31_Wnb289zZd83TNTaGF4KNIxRyWXbptNUgAYfUBdVYvJ7wqzaXB6mqemL-0AQvbkOXAXFq_pBNGB6ogCF0RgDwPPunJlf608ObUc9WqY1CY8UCuGH-mBbKVA5H4IEnFYWnFZ-9ftu6UHWpd6SS3OPG-wynbCjqgbSlPyK0f79WU4OkXN9yejbT"/>
+<span class="font-display-lg-mobile text-display-lg-mobile tracking-tight text-primary dark:text-primary-fixed">SaborPremium</span>
+</div>
+<div class="flex gap-md items-center">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-colors" data-icon="search">search</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-colors" data-icon="shopping_cart">shopping_cart</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-colors" data-icon="account_circle">account_circle</button>
+</div>
+</div>
+</header>
+<!-- Hero Banner & Restaurant Info -->
+<section class="mt-16 w-full max-w-[1440px] mx-auto overflow-hidden">
+<div class="relative h-48 md:h-64 lg:h-80 w-full">
+<img class="w-full h-full object-cover" data-alt="A professional, high-end photography of a modern restaurant interior with elegant wood furniture and warm ambient lighting. The atmosphere is sophisticated and inviting, utilizing a minimalist aesthetic with clean lines and premium textures. The color palette features soft neutrals and deep wood tones, creating a welcoming and upscale culinary environment. Soft natural light streams in, highlighting the pristine tables and minimalist decor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4xPCae5P49ID7hKJv5Hlq6zn41oHfNqjItTL1Fhf_-BeZPKha1SALuLfS4QOXBiRP2cGyGMXhO4YJkKqR10aa4FwBDA5Hate7QZM68jv2VAr218KEjjpqzcO-8zgMbyrzSM-MhpeE2WjnS8KR-ZUDHbXSQ7s-WiAlCO6-pVf725hAaAmA3RELoBSORPjRu8dVsAXrbguZsJlPDuFeYknB0kc_rOGUVXLygdLXw3EXOrJXjOYF5rRezpUQaOe_lkTr4Ka66nH2YzV8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-margin-mobile left-margin-mobile md:left-margin-desktop text-white">
+<div class="flex items-center gap-sm mb-xs">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-base py-1 rounded-full font-label-sm text-label-sm uppercase tracking-wider">Aberto</span>
+</div>
+<h1 class="font-headline-md text-headline-md-mobile md:text-headline-md mb-xs">Bistrô da Vila</h1>
+<p class="font-body-sm text-body-sm text-white/90 max-w-lg">Culinária artesanal com ingredientes orgânicos selecionados para uma experiência gastronômica inesquecível.</p>
+</div>
+</div>
+</section>
+<!-- Category Navigation -->
+<nav class="sticky top-16 z-40 bg-surface/95 border-b border-outline-variant/10 py-md px-margin-mobile overflow-x-auto hide-scrollbar flex gap-md items-center shadow-sm">
+<a class="flex-shrink-0 font-label-md text-label-md text-secondary border-b-2 border-secondary pb-1" href="#lanches">Lanches</a>
+<a class="flex-shrink-0 font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors pb-1" href="#bebidas">Bebidas</a>
+<a class="flex-shrink-0 font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors pb-1" href="#sobremesas">Sobremesas</a>
+<a class="flex-shrink-0 font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors pb-1" href="#combos">Combos Especiais</a>
+<a class="flex-shrink-0 font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors pb-1" href="#porcoes">Porções</a>
+</nav>
+<!-- Menu Content -->
+<main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop py-lg">
+<!-- Section: Lanches -->
+<section class="mb-xl" id="lanches">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-secondary" data-icon="restaurant">restaurant</span>
+<h2 class="font-headline-sm text-headline-sm">Lanches Artesanais</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Product Card 1 -->
+<div class="group bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_10px_32px_rgba(0,0,0,0.08)] transition-all duration-300 flex items-start gap-md border border-outline-variant/10">
+<div class="flex-1">
+<div class="flex items-center gap-xs mb-xs">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-xs rounded font-label-sm text-[10px] uppercase">Mais Pedido</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-base">Smash Burger Premium</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md line-clamp-2">Pão brioche artesanal, 2 blends de 80g de angus, queijo cheddar inglês e maionese trufada.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-headline-sm text-headline-sm text-on-tertiary-container">R$ 38,90</span>
+<button class="w-10 h-10 rounded-full bg-secondary text-white flex items-center justify-center active:scale-90 transition-transform shadow-md">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A gourmet smash burger with melting golden cheddar cheese and a glossy brioche bun, presented on a minimalist dark surface. The lighting is focused and warm, highlighting the texture of the juicy meat and the freshness of the ingredients. The composition is clean and premium, following a professional food photography style with soft bokeh background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_WwFzkz9njTK7Q_2BjhCuwooIb0Z5kR9BHYJO1R3coJl4Tx93vZd7G-J1fM4zt_ZhSxUx_2oczflEkOnXPXDIF1bCavCfBOU3G5bPUQFG6OxG90eH1uUCZJgnYHUc1DHQeOp04tTlyiRtMuRqS5fH_MhhsvgTi78EMyAYKLTOcTwxgOuRuo5202tzB1r0JOcf5eaVHCRIi1pzP8-xiaKrBsgs0fj8e1yt3f05lJquNr5q-LdsWqNfNPZvgHy9wcqBzf3kDUUrdbJy"/>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_10px_32px_rgba(0,0,0,0.08)] transition-all duration-300 flex items-start gap-md border border-outline-variant/10">
+<div class="flex-1">
+<h3 class="font-headline-sm text-headline-sm mb-base">Chicken Crispy Delux</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md line-clamp-2">Filé de frango empanado na panko super crocante, alface americana e molho honey mustard.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-headline-sm text-headline-sm text-on-tertiary-container">R$ 34,00</span>
+<button class="w-10 h-10 rounded-full bg-secondary text-white flex items-center justify-center active:scale-90 transition-transform shadow-md">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A crispy fried chicken sandwich with fresh lettuce and a creamy sauce on a toasted bun. The image is captured with professional studio lighting that emphasizes the crunchy texture of the golden-brown breading. The background is a clean, neutral tone consistent with a high-end restaurant menu aesthetic. Soft shadows and high contrast create a mouth-watering visual." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8zYudjwTuVIXtrfPHBe1zqEBVOObsCbQRpLW5W1mSBVTlMIUj8utcZYLMDSYLhFODDyid1J9wi7YxgRDvy3NjCJlyJ6manZ1W7ZxnVIGf-8FsXl4o4_j1W3q7B-OZoz5LaLJWuD_xz9_S1jXQ2Q_mg1iD9p4arzimNASvTGiUhIAkzGMxbcRU_tWj7r_5DV6snjf3W73P9BL9DFLL97PH1yduNh0XKS9lMu3rEsQc3YwOdCKQAd1E93unJhfJOe9r7bvaiCNs4jiU"/>
+</div>
+</div>
+<!-- Product Card 3 (Vegano) -->
+<div class="group bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_10px_32px_rgba(0,0,0,0.08)] transition-all duration-300 flex items-start gap-md border border-outline-variant/10">
+<div class="flex-1">
+<div class="flex items-center gap-xs mb-xs">
+<span class="bg-on-tertiary-container/10 text-on-tertiary-container px-xs rounded font-label-sm text-[10px] uppercase">Vegano</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-base">Veggie Garden</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md line-clamp-2">Hambúrguer de grão de bico com especiarias, tomate seco, rúcula e pão integral.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-headline-sm text-headline-sm text-on-tertiary-container">R$ 36,50</span>
+<button class="w-10 h-10 rounded-full bg-secondary text-white flex items-center justify-center active:scale-90 transition-transform shadow-md">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A colorful vegan burger featuring a chickpea patty, fresh arugula, and sun-dried tomatoes. The presentation is vibrant and fresh, set against a bright, minimalist backdrop. The lighting is soft and airy, emphasizing the natural colors of the vegetables. The visual style is premium and health-conscious, reflecting a modern bistro vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNTpedhOhvtA5dM0dCaGLC1SWEm28WqthLgDRF3mZm5JHdRGU68qDGHbngKsYno5P_Cn5j4iKEXirSRN3G7jyEFQW2w0YdMI7-hbtxJvnWOfD1gdXC0MufBH0N8PqtotHkub0yTuhvMuuIY9iJ4lkblqkJaxpVHFTsZtSJWAbZFNp6kTBpYznOgbO5y2U-FrQhASjQgg-uBIgl18CD1SDzisR6RQn1xxmMiP2Fek9HPEu7z5eWtm7VuybN9ShVifSEn-Nm603hFOpv"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Bebidas -->
+<section class="mb-xl" id="bebidas">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-secondary" data-icon="local_bar">local_bar</span>
+<h2 class="font-headline-sm text-headline-sm">Bebidas</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Product Card 4 -->
+<div class="group bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_10px_32px_rgba(0,0,0,0.08)] transition-all duration-300 flex items-start gap-md border border-outline-variant/10">
+<div class="flex-1">
+<h3 class="font-headline-sm text-headline-sm mb-base">Pink Lemonade</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md line-clamp-2">Limonada siciliana batida com framboesas frescas e hortelã.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-headline-sm text-headline-sm text-on-tertiary-container">R$ 18,00</span>
+<button class="w-10 h-10 rounded-full bg-secondary text-white flex items-center justify-center active:scale-90 transition-transform shadow-md">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A refreshing glass of pink lemonade garnished with fresh raspberries and a sprig of green mint. Condensation beads are visible on the outside of the glass, suggesting a chilled temperature. The background is a clean white marble surface, illuminated by bright, diffused sunlight. The style is minimalist and vibrant, evoking a cool summer feeling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8CZPwcsYN5Hd_RWAVR_xEvqp0BkMDeKJBzwazFFfflL1UbBZZzUDs042BSnotKXETUauTqKP9JdEvRtCx95A62yfNp77-GdYdUNhc9JZndmGvoDqpNSAiS4f9txxmWliZiMBImyjCNuA38lJ2cfqkbxnFPgd3DfIyFQvqLmnBWQaQNbN9_TCVHidyBIKAPcVjOfj5iyAnk780KFvWkTIKd90PwsB5auYG5MAwe2pKuA9OXwoumN1cwWFf798aJlxcekWozperEH32"/>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="group bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_10px_32px_rgba(0,0,0,0.08)] transition-all duration-300 flex items-start gap-md border border-outline-variant/10">
+<div class="flex-1">
+<h3 class="font-headline-sm text-headline-sm mb-base">Café Cold Brew</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md line-clamp-2">Grãos 100% arábica extraídos a frio por 18 horas. Intenso e refrescante.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="font-headline-sm text-headline-sm text-on-tertiary-container">R$ 16,50</span>
+<button class="w-10 h-10 rounded-full bg-secondary text-white flex items-center justify-center active:scale-90 transition-transform shadow-md">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A bottle of artisanal cold brew coffee on ice, featuring a clean label and dark amber liquid. The atmosphere is industrial-chic, with minimalist lighting that highlights the clarity of the ice cubes and the depth of the coffee color. The composition is professional and modern, using a cool color palette with deep browns and whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHUdEoswK_gFL1zMDPI3gKVXbMnfWDOiYiCOShUCVGeFX-PYkeAHnPAnHFQwJpOdbaIQqYoAPwokIuqDiWaSjZrldwtiIVualox2Cvdl1Dj_gxrCY7Uh3T1t-L7GiN12-k3_VhQE9MGVRFtPiEiOvCmrMTuC9bgP5NJOatjM3Xa66n0p5YCHRnFr9SVnyRtHe2T0crfa_V2ynhHb4VPghotrfpBxbHjxXe7aOdgnCQu_otsi3DJ_G6SzLieOMX9IK_gnJqm_RdtOCJ"/>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile and Tablet Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface/80 dark:bg-surface-container-highest/80 backdrop-blur-lg border-t border-outline-variant/20 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] rounded-t-xl h-20 pb-safe px-4 flex justify-around items-center">
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="font-label-sm text-label-sm-mobile">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-sm text-label-sm-mobile">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-label-sm text-label-sm-mobile">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm-mobile">Profile</span>
+</a>
+</nav>
+<!-- Floating Action Button for Cart (Sticky Contextual) -->
+<div class="fixed bottom-24 right-margin-mobile z-40">
+<button class="bg-secondary text-white p-md rounded-2xl shadow-lg flex items-center gap-base active:scale-95 transition-all glass-effect bg-secondary/90 border border-white/20">
+<span class="material-symbols-outlined" data-icon="shopping_basket">shopping_basket</span>
+<span class="font-label-md text-label-md">Carrinho • 2</span>
+</button>
+</div>
+<script>
+        // Simple Interaction logic for active states and scrolls
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Update active category style
+                    document.querySelectorAll('nav a').forEach(a => {
+                        a.classList.remove('text-secondary', 'border-b-2', 'border-secondary');
+                        a.classList.add('text-on-surface-variant');
+                    });
+                    this.classList.add('text-secondary', 'border-b-2', 'border-secondary');
+                    this.classList.remove('text-on-surface-variant');
+                }
+            });
+        });
+
+        // Toggle sticky header opacity on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>
